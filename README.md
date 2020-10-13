@@ -1,0 +1,2 @@
+# pokeapp-angular
+Angular practice
