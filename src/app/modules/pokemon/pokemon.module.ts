@@ -14,6 +14,7 @@ import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PokemonCardDataService } from './services/pokemon-card-data.service';
 import { PokemonCardEntityService } from './services/pokemon-card-entity.service';
+import { PokemonCardDataComponent } from './pokemon-card-data/pokemon-card-data.component';
 
 export const pokemonListRoutes: Routes = [
   {
@@ -34,7 +35,7 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 @NgModule({
-  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent],
+  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent, PokemonCardDataComponent],
   imports: [
     CommonModule,
     MatCardModule,

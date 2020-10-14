@@ -12,7 +12,7 @@ export class PokemonCardDataService extends DefaultDataService<Pokemon>{
     super('Pokemon', http, httpUrlGenerator);
   }
 
-  getWithQuery(params): Observable<Pokemon[]>{
+  getWithQuery(params: any): Observable<Pokemon[]>{
     const pokemonArray = [];
 
     return combineLatest([this.http.get(params.url), this.http.get(params.speciesUrl)])
@@ -28,10 +28,9 @@ export class PokemonCardDataService extends DefaultDataService<Pokemon>{
             types: pokemonInfo['types'],
             abilities: pokemonInfo['abilities'],
             stats: pokemonInfo['stats'],
-            description: speciesInfo['flavor_text_entries'].filter(entry => entry.language.name === 'en')[0].flavor_text,
+            description: speciesInfo['flavor_text_entries'].filter((entry: any) => entry.language.name === 'en')[0].flavor_text,
             genderRate: speciesInfo['gender_rate']
           };
-          console.log(res);
           pokemonArray.push(pokemon);
           return pokemonArray;
         })

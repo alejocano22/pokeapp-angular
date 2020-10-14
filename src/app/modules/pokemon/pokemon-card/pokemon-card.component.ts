@@ -16,28 +16,11 @@ export class PokemonCardComponent implements OnInit {
   mode: string;
   dialogTitle: string;
 
-  id: number;
-  pokemonInfo$: Observable<Pokemon[]>;
-
   constructor(private dialogRef: MatDialogRef<PokemonCardComponent>,
               @Inject(MAT_DIALOG_DATA) data,
               private pokemonCardService: PokemonCardEntityService) {
     this.dialogTitle = data.dialogTitle;
     this.pokemon = data.pokemon;
-
-    this.pokemonInfo$ = this.pokemonCardService.entities$
-      .pipe(
-        map(pokemons => pokemons.filter(pokemon => pokemon.name === this.pokemon.name))
-      );
-    this.load();
-  }
-
-  load(): void{
-    // console.log(this.pokemonInfo$.subscribe());
-  }
-
-  showMode(): void {
-    console.log(this.mode);
   }
 
   compare(): void {
@@ -49,7 +32,6 @@ export class PokemonCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.pokemonCardService.getAll();
   }
 
 }
