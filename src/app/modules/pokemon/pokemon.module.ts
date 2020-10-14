@@ -10,6 +10,10 @@ import { PokemonListEntityService } from './services/pokemon-list-entity.service
 import { PokemonListResolver } from './services/pokemon-list.resolver';
 import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
+import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PokemonCardDataService } from './services/pokemon-card-data.service';
+import { PokemonCardEntityService } from './services/pokemon-card-entity.service';
 
 export const pokemonListRoutes: Routes = [
   {
@@ -26,27 +30,33 @@ const entityMetadata: EntityMetadataMap = {
   PokemonList: {
     selectId: (item: PokemonListItem) => item.name
   },
+  Pokemon: { }
 };
 
 @NgModule({
-  declarations: [PokemonListComponent, HomeComponent],
+  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent],
   imports: [
     CommonModule,
     MatCardModule,
+    MatDialogModule,
     RouterModule.forChild(pokemonListRoutes)
   ],
   providers: [
     PokemonListEntityService,
     PokemonListDataService,
+    PokemonCardEntityService,
+    PokemonCardDataService,
     PokemonListResolver
   ]
 })
 export class PokemonModule {
   constructor(private eds: EntityDefinitionService,
               private entityDataService: EntityDataService,
-              private pokemonListDataService: PokemonListDataService) {
+              private pokemonListDataService: PokemonListDataService,
+              private pokemonCardDataService: PokemonCardDataService) {
 
     eds.registerMetadataMap(entityMetadata);
     entityDataService.registerService('PokemonList', pokemonListDataService);
+    entityDataService.registerService('Pokemon', pokemonCardDataService);
   }
 }

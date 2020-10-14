@@ -8,7 +8,6 @@ export class PokemonListResolver implements Resolve<boolean> {
   constructor(private pokemonListService: PokemonListEntityService){}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
-    console.log('In resolver');
     return this.pokemonListService.loaded$.pipe(
       tap(loaded => {
         if (!loaded) {

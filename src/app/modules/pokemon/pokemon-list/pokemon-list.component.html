@@ -1,11 +1,12 @@
 <div class="pokemon-list">
-  <mat-card *ngFor="let pokemon of pokemonListItems" class="course-card mat-elevation-z10">
+  <mat-card *ngFor="let pokemon of pokemonListItems" class="course-card mat-elevation-z10" (click)="openPokemonCard(pokemon)">
     <img mat-card-image class="poke-img" src='{{getId(pokemon.name)}}'>
     <mat-card-header>
       <mat-card-title>{{pokemon.name}}</mat-card-title>
     </mat-card-header>
   </mat-card>
+  <button mat-raised-button 
+  (click)="loadMorePokemon()">Load More</button>
 </div>
-
 
 
