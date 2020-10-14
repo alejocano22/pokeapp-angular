@@ -1,0 +1,13 @@
+.course-card {
+  width: auto;
+}
+
+.pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+}
+
+.poke-img {
+  width: auto;
+}

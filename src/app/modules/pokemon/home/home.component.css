@@ -1,0 +1,9 @@
+.pokemon-list {
+  width: 100%;
+}
+
+.title {
+  margin-top: 1rem;
+  color: var(--pokemon-red);
+  text-align: center;
+}
