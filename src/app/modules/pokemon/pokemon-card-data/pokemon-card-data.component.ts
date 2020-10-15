@@ -4,9 +4,8 @@ import { delay, map } from 'rxjs/operators';
 import { Pokemon } from '../models/pokemon';
 import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
 import { imagesUrl } from '../../../utils/const/images';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { PokemonState } from '../reducers';
-import { isComparing } from '../selectors/pokemon.selectors';
 
 @Component({
   selector: 'app-pokemon-card-data',
@@ -16,14 +15,19 @@ import { isComparing } from '../selectors/pokemon.selectors';
 export class PokemonCardDataComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
-  @Input() mode: boolean;
+  @Input() isComparing: boolean;
   pokemonInfo$: Observable<Pokemon>;
   loading$: Observable<boolean>;
 
+  constructor(private pokemonCardService: PokemonCardEntityService,
+              private store: Store<PokemonState>) { }
 
-  constructor(private pokemonCardService: PokemonCardEntityService) { }
-
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    if (this.isComparing === true){
+      console.log('Estoy en data y se que debo comparar');
+    } else {
+      console.log('Estoy en data y se que debo mostrar');
+    }
     this.pokemonInfo$ = this.pokemonCardService.entities$
       .pipe(
         map((pokemonList) => pokemonList.find((pokemon) => pokemon.name === this.pokemon.name))

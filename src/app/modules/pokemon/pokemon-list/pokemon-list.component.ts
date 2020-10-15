@@ -19,8 +19,8 @@ import { isComparing } from '../selectors/pokemon.selectors';
 })
 export class PokemonListComponent implements OnInit {
   @Input() pokemonListItems: PokemonListItem[];
-  nextOffset = 20;
 
+  nextOffset = 20;
 
 
   constructor(private dialog: MatDialog, private courseService: PokemonListEntityService,
@@ -53,8 +53,8 @@ export class PokemonListComponent implements OnInit {
     dialogConfig.data = {
       dialogTitle: pokemon.name,
       pokemon,
-      mode: 'show'
     };
+    console.log('Tengo a', pokemon);
     this.dialog.open(PokemonCardComponent, dialogConfig);
   }
 
