@@ -1,5 +1,7 @@
-.pokemon-list {
-  width: 100%;
+.pokemon-list-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .list-title {
@@ -9,4 +11,16 @@
   color: var(--pokemon-red);
   text-align: center;
   font-weight: 700;
+}
+
+.app-pokemon-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .list-title {
+    font-size: 2rem;
+  }
 }
