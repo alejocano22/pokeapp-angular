@@ -1,0 +1,27 @@
+.mat-dialog-container {
+  padding: 0;
+}
+
+.pokemon-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  background: var(--pokemon-dark-red);
+}
+
+.pokemon-name {
+  width: 100%;
+  text-align: center;
+  color: var(--pokemon-white);
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.menu-button {
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}

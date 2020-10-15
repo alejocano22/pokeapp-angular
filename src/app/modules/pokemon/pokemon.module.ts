@@ -9,6 +9,8 @@ import { PokemonListDataService } from './services/pokemon-list-data.service';
 import { PokemonListEntityService } from './services/pokemon-list-entity.service';
 import { PokemonListResolver } from './services/pokemon-list.resolver';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+
 import { HomeComponent } from './home/home.component';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -40,6 +42,7 @@ const entityMetadata: EntityMetadataMap = {
     CommonModule,
     MatCardModule,
     MatDialogModule,
+    MatIconModule,
     RouterModule.forChild(pokemonListRoutes)
   ],
   providers: [

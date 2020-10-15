@@ -1,36 +1,10 @@
-<!-- <div class="pokemon-list">
-  <mat-card *ngFor="let pokemon of pokemonListItems" class="poke-card mat-elevation-z10" (click)="openPokemonCard(pokemon)">
-    <img mat-card-image class="poke-img" src='{{getId(pokemon.name)}}'>
-    <mat-card-header>
-      <mat-card-title>{{pokemon.name}}</mat-card-title>
-    </mat-card-header>
-  </mat-card>
-  <button mat-raised-button 
-  (click)="loadMorePokemon()">Load More</button>
-</div> -->
-<!-- <div class='pokemon-container'> -->
-  <div class="pokemon-list" > 
-    <div *ngFor="let pokemon of pokemonListItems" (click)="openPokemonCard(pokemon)">
-      <div class='pokemon-item'>
-        <img class="pokemon-image" src='{{getId(pokemon.name)}}'>
-        <h2 class='pokemon-name'>{{pokemon.name.toUpperCase()}}</h2>
-      </div>
+<div class="pokemon-list" > 
+  <div *ngFor="let pokemon of pokemonListItems" (click)="openPokemonCard(pokemon)">
+    <div class='pokemon-item'>
+      <img class="pokemon-image" src='{{getId(pokemon.name)}}'>
+      <h2 class='pokemon-name'>{{pokemon.name.toUpperCase()}}</h2>
     </div>
-    <button (click)="loadMorePokemon()">Load More</button>
   </div>
-<!-- </div> -->
-
-<!-- <div class='pokemon'>
-  <h1 class='list-title'>List of Pokémon</h1>
-  <ul class='pokemon-list'>
-      <li class='pokemon-item'>
-        <img
-          src="https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/0.png?raw=true"
-          alt="hell"
-          class='pokemon-image'>
-        </img>
-        <h2 class='pokemon-name'>pokemon.name.toUpperCase()</h2>
-      </li>
-  </ul>  
-</div> -->
+  <button (click)="loadMorePokemon()">Load More</button>
+</div>
 
