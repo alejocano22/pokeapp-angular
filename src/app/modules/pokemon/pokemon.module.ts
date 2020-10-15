@@ -17,6 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PokemonCardDataService } from './services/pokemon-card-data.service';
 import { PokemonCardEntityService } from './services/pokemon-card-entity.service';
 import { PokemonCardDataComponent } from './pokemon-card-data/pokemon-card-data.component';
+import { StoreModule } from '@ngrx/store';
+import { pokemonReducer } from './reducers';
 
 export const pokemonListRoutes: Routes = [
   {
@@ -43,7 +45,8 @@ const entityMetadata: EntityMetadataMap = {
     MatCardModule,
     MatDialogModule,
     MatIconModule,
-    RouterModule.forChild(pokemonListRoutes)
+    RouterModule.forChild(pokemonListRoutes),
+    StoreModule.forFeature('pokemonListState', pokemonReducer),
   ],
   providers: [
     PokemonListEntityService,

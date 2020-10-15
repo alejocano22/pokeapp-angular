@@ -1,4 +1,4 @@
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonListItem } from '../models/pokemon-list-item';
 import { PokemonListEntityService } from '../services/pokemon-list-entity.service';
@@ -7,6 +7,10 @@ import { defaultDialogConfig } from '../../../utils/dialog/default-dialog-config
 import { MatDialog } from '@angular/material/dialog';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
+import { select, Store } from '@ngrx/store';
+import { PokemonState } from '../reducers';
+
+import { isComparing } from '../selectors/pokemon.selectors';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -16,8 +20,12 @@ import { PokemonCardEntityService } from '../services/pokemon-card-entity.servic
 export class PokemonListComponent implements OnInit {
   @Input() pokemonListItems: PokemonListItem[];
   nextOffset = 20;
+
+
+
   constructor(private dialog: MatDialog, private courseService: PokemonListEntityService,
-              private pokemonCardService: PokemonCardEntityService) { }
+              private pokemonCardService: PokemonCardEntityService,
+              ) { }
 
   ngOnInit(): void {
   }

@@ -4,6 +4,9 @@ import { delay, map } from 'rxjs/operators';
 import { Pokemon } from '../models/pokemon';
 import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
 import { imagesUrl } from '../../../utils/const/images';
+import { select, Store } from '@ngrx/store';
+import { PokemonState } from '../reducers';
+import { isComparing } from '../selectors/pokemon.selectors';
 
 @Component({
   selector: 'app-pokemon-card-data',
@@ -13,8 +16,10 @@ import { imagesUrl } from '../../../utils/const/images';
 export class PokemonCardDataComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
+  @Input() mode: boolean;
   pokemonInfo$: Observable<Pokemon>;
   loading$: Observable<boolean>;
+
 
   constructor(private pokemonCardService: PokemonCardEntityService) { }
 

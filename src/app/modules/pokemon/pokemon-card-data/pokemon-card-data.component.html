@@ -1,8 +1,7 @@
-<div class="spinner-container" *ngIf="(loading$ | async )">
-  <mat-spinner></mat-spinner>
-</div>
 <div class="info" *ngIf="(pokemonInfo$ | async) as pokeinfo">
   <img src="{{imgUrl(pokeinfo.id)}}" alt="Girl in a jacket" width="100px" height="100px">
   <h1>{{ pokeinfo.name }}</h1>
   <p>{{ pokeinfo.description }}</p>
+  <h1 *ngIf="mode">En data and is true</h1>
 </div>
+

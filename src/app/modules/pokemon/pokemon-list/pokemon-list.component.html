@@ -1,4 +1,4 @@
-<div class="pokemon-list" > 
+<div class="pokemon-list"> 
   <div *ngFor="let pokemon of pokemonListItems" (click)="openPokemonCard(pokemon)">
     <div class='pokemon-item'>
       <img class="pokemon-image" src='{{getId(pokemon.name)}}'>
