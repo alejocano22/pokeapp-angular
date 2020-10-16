@@ -3,8 +3,18 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const selectPokemonState = createFeatureSelector<PokemonState>('pokemonListState');
 
-export const isComparing = createSelector(
+export const getIsComparing = createSelector(
   selectPokemonState,
-  (compare) => !!compare.isComparing
+  (state) => !!state.isComparing
+);
+
+export const getCurrentPokemon = createSelector(
+  selectPokemonState,
+  (state) => state.currentPokemon
+);
+
+export const getComparisonPokemon = createSelector(
+  selectPokemonState,
+  (state) => state.comparisonPokemon
 );
 

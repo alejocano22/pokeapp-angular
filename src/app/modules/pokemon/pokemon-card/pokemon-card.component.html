@@ -4,7 +4,11 @@
     </button>
     <h2 class='pokemon-name'>{{dialogTitle}}</h2>
   </div>
-  <app-pokemon-card-data [pokemon]="pokemon" [isComparing]="isComparing$ | async"></app-pokemon-card-data>
-  <button mat-raised-button (click)="compare()" *ngIf="!data">
+  <app-pokemon-card-data 
+    [currentPokemon]="currentPokemon$ | async" 
+    [comparisonPokemon]="comparisonPokemon$ | async" 
+    [isComparing]="isComparing$ | async">
+  </app-pokemon-card-data>
+  <button mat-raised-button (click)="compare()" *ngIf="!isComparing">
     Compare
   </button>

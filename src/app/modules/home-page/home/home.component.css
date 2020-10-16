@@ -1,4 +1,11 @@
-.mat-progress-spinner circle,
-.mat-spinner circle {
-  stroke: #b53fa5;
+.home-title {
+  margin: 5rem;
+  font-size: 5rem;
+  color: var(--pokemon-dark-red);
+  text-align: center;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
 }

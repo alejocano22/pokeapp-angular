@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PokemonListItem } from '../models/pokemon-list-item';
 import { PokemonState } from '../reducers';
-import { isComparing } from '../selectors/pokemon.selectors';
+import { getIsComparing } from '../selectors/pokemon.selectors';
 import { PokemonListEntityService } from '../services/pokemon-list-entity.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   isComparing$: Observable<boolean>;
 
   ngOnInit(): void {
-    this.isComparing$ = this.store.pipe(select(isComparing));
+    this.isComparing$ = this.store.pipe(select(getIsComparing));
     this.reload();
   }
 

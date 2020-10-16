@@ -1,11 +1,22 @@
-<div *ngIf="!isComparing">
-  <div class="info" *ngIf="(pokemonInfo$ | async) as pokeinfo">
-    <img src="{{imgUrl(pokeinfo.id)}}" alt="Girl in a jacket" width="100px" height="100px">
+<div *ngIf="isComparing">
+  <h1>Display compare logic</h1>
+  <div class="info" *ngIf="(currentPokemonInfo$ | async) as pokeinfo">
+    <img src="{{getImage(pokeinfo.id)}}" alt="currentPokemon" width="100px" height="100px">
+    <h1>{{ pokeinfo.name }}</h1>
+    <p>{{ pokeinfo.description }}</p>
+  </div>
+  <div class="info" *ngIf="(comparisonPokemonInfo$ | async) as pokeinfo">
+    <img src="{{getImage(pokeinfo.id)}}" alt="comparisonPokemon" width="100px" height="100px">
     <h1>{{ pokeinfo.name }}</h1>
     <p>{{ pokeinfo.description }}</p>
   </div>
 </div>
 
-<div *ngIf="isComparing">
-  <h1>Display compare logic</h1>
+<div *ngIf="!isComparing">
+  <h1>Display show logic</h1>
+  <div class="info" *ngIf="(currentPokemonInfo$ | async) as pokeinfo">
+    <img src="{{getImage(pokeinfo.id)}}" alt="currentPokemon" width="100px" height="100px">
+    <h1>{{ pokeinfo.name }}</h1>
+    <p>{{ pokeinfo.description }}</p>
+  </div>
 </div>

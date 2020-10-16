@@ -1,11 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Pokemon } from '../models/pokemon';
 import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
-import { imagesUrl } from '../../../utils/const/images';
-import { Store } from '@ngrx/store';
+
+import { select, Store } from '@ngrx/store';
 import { PokemonState } from '../reducers';
+import { PokemonListItem } from '../models/pokemon-list-item';
+
+import { getPokemonImageUrl } from '../../../utils/images/pokemon-images';
 
 @Component({
   selector: 'app-pokemon-card-data',
@@ -13,29 +16,39 @@ import { PokemonState } from '../reducers';
   styleUrls: ['./pokemon-card-data.component.css']
 })
 export class PokemonCardDataComponent implements OnInit {
-
-  @Input() pokemon: Pokemon;
+  @Input() currentPokemon: PokemonListItem;
+  @Input() comparisonPokemon: PokemonListItem;
   @Input() isComparing: boolean;
-  pokemonInfo$: Observable<Pokemon>;
-  loading$: Observable<boolean>;
+  currentPokemonInfo$: Observable<Pokemon>;
+  comparisonPokemonInfo$: Observable<Pokemon>;
+
+
 
   constructor(private pokemonCardService: PokemonCardEntityService,
-              private store: Store<PokemonState>) { }
+              private store: Store<PokemonState>) {
+
+              }
 
   async ngOnInit(): Promise<void> {
-    if (this.isComparing === true){
-      console.log('Estoy en data y se que debo comparar');
-    } else {
-      console.log('Estoy en data y se que debo mostrar');
-    }
-    this.pokemonInfo$ = this.pokemonCardService.entities$
+    console.log(getPokemonImageUrl(0));
+    if (this.isComparing){
+      this.comparisonPokemonInfo$ = this.pokemonCardService.entities$
       .pipe(
-        map((pokemonList) => pokemonList.find((pokemon) => pokemon.name === this.pokemon.name))
+        map((pokemonList) => pokemonList.find((pokemon) => {
+          return pokemon.name === this.comparisonPokemon.name;
+        }))
       );
-    this.loading$ = this.pokemonCardService.loading$.pipe(delay(0));
+    }
+
+    this.currentPokemonInfo$ = this.pokemonCardService.entities$
+      .pipe(
+        map((pokemonList) => pokemonList.find((pokemon) => {
+          return pokemon.name === this.currentPokemon.name;
+        }))
+      );
   }
 
-  imgUrl(id: number): string{
-    return imagesUrl + id.toString() + '.png?raw=true';
+  getImage(id: number): string{
+    return getPokemonImageUrl(id);
   }
 }

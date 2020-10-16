@@ -1,16 +1,21 @@
-import { combineLatest, Observable } from 'rxjs';
+import { updateComparisonPokemon, updateCurrentPokemon } from './../actions/pokemon.actions';
+
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonListItem } from '../models/pokemon-list-item';
 import { PokemonListEntityService } from '../services/pokemon-list-entity.service';
 
-import { defaultDialogConfig } from '../../../utils/dialog/default-dialog-config';
+import { defaultDialogConfig } from 'src/app/utils/dialog/default-dialog-config';
 import { MatDialog } from '@angular/material/dialog';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
 import { select, Store } from '@ngrx/store';
 import { PokemonState } from '../reducers';
 
-import { isComparing } from '../selectors/pokemon.selectors';
+import { getIsComparing } from '../selectors/pokemon.selectors';
+import { take } from 'rxjs/operators';
+import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
+
+import { speciesApi } from 'src/app/utils/const/pokeapi';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -19,21 +24,14 @@ import { isComparing } from '../selectors/pokemon.selectors';
 })
 export class PokemonListComponent implements OnInit {
   @Input() pokemonListItems: PokemonListItem[];
-
   nextOffset = 20;
-
+  isComparing: boolean;
 
   constructor(private dialog: MatDialog, private courseService: PokemonListEntityService,
               private pokemonCardService: PokemonCardEntityService,
-              ) { }
+              private store: Store<PokemonState>) { }
 
   ngOnInit(): void {
-  }
-
-  getId(name: string): string {
-    const id = this.pokemonListItems.findIndex(x => x.name === name) + 1;
-    const url = 'https://github.com/PokeAPI/sprites/blob/146c91287ad01f6e15315bbd733fd7442c91fe6d/sprites/pokemon/';
-    return url + id + '.png?raw=true' ;
   }
 
   loadMorePokemon(): void {
@@ -44,18 +42,30 @@ export class PokemonListComponent implements OnInit {
     this.nextOffset  += 20;
   }
 
-  openPokemonCard(pokemon: PokemonListItem): void {
+  async openPokemonCard(pokemon: PokemonListItem): Promise<void> {
     this.pokemonCardService.getWithQuery({
       url: pokemon.url,
-      speciesUrl: 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon.name
+      speciesUrl: speciesApi + pokemon.name
     });
     const dialogConfig = defaultDialogConfig();
     dialogConfig.data = {
       dialogTitle: pokemon.name,
       pokemon,
     };
-    console.log('Tengo a', pokemon);
+
+    this.isComparing = await this.store.pipe(select(getIsComparing), take(1)).toPromise();
+    if (this.isComparing){
+      this.store.dispatch(updateComparisonPokemon({pokemon}));
+    }else{
+      this.store.dispatch(updateCurrentPokemon({pokemon}));
+    }
+
     this.dialog.open(PokemonCardComponent, dialogConfig);
+  }
+
+  getImage(name: string): string{
+    const id = this.pokemonListItems.findIndex((pokemon) => pokemon.name === name) + 1;
+    return getPokemonImageUrl(id);
   }
 
 }
