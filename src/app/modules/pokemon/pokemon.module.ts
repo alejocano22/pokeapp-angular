@@ -20,6 +20,7 @@ import { PokemonCardDataComponent } from './pokemon-card-data/pokemon-card-data.
 import { StoreModule } from '@ngrx/store';
 import { pokemonReducer } from './reducers';
 import { PokemonCardHeaderComponent } from './pokemon-card-header/pokemon-card-header.component';
+import { PokemonComparisonBoxComponent } from './pokemon-comparison-box/pokemon-comparison-box.component';
 
 export const pokemonListRoutes: Routes = [
   {
@@ -40,7 +41,7 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 @NgModule({
-  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent, PokemonCardDataComponent, PokemonCardHeaderComponent],
+  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent, PokemonCardDataComponent, PokemonCardHeaderComponent, PokemonComparisonBoxComponent],
   imports: [
     CommonModule,
     MatCardModule,

@@ -1,4 +1,8 @@
 <div class="pokemon-list-home">
+  <app-pokemon-comparison-box
+    [isComparing]="isComparing$ | async"
+    [currentPokemon]="currentPokemon$ | async">
+  </app-pokemon-comparison-box>
   <h1 class="list-title">List of Pokémon</h1>
   <app-pokemon-list 
     class="pokemon-list" 
