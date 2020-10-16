@@ -1,8 +1,8 @@
 <div class="pokemon-list"> 
   <div *ngFor="let pokemon of pokemonListItems" (click)="openPokemonCard(pokemon)">
-    <div class='pokemon-item'>
-      <img class="pokemon-image" src='{{getImage(pokemon.name)}}'>
-      <h2 class='pokemon-name'>{{pokemon.name.toUpperCase()}}</h2>
+    <div class="pokemon-item">
+      <img class="pokemon-image" src="{{getImage(pokemon.name)}}">
+      <h2 class="pokemon-name">{{pokemon.name.toUpperCase()}}</h2>
     </div>
   </div>
   <button (click)="loadMorePokemon()">Load More</button>

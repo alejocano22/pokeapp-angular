@@ -1,5 +1,6 @@
+import { getGender } from './../../../utils/pokemon/pokemon-gender';
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { async, combineLatest, forkJoin, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pokemon } from '../models/pokemon';
 import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
@@ -9,6 +10,8 @@ import { PokemonState } from '../reducers';
 import { PokemonListItem } from '../models/pokemon-list-item';
 
 import { getPokemonImageUrl } from '../../../utils/images/pokemon-images';
+
+
 
 @Component({
   selector: 'app-pokemon-card-data',
@@ -21,7 +24,7 @@ export class PokemonCardDataComponent implements OnInit {
   @Input() isComparing: boolean;
   currentPokemonInfo$: Observable<Pokemon>;
   comparisonPokemonInfo$: Observable<Pokemon>;
-
+  pokemonDetailTitle = ['Height', 'Weight'];
 
 
   constructor(private pokemonCardService: PokemonCardEntityService,
@@ -30,7 +33,15 @@ export class PokemonCardDataComponent implements OnInit {
               }
 
   async ngOnInit(): Promise<void> {
-    console.log(getPokemonImageUrl(0));
+
+
+
+    this.currentPokemonInfo$ = this.pokemonCardService.entities$
+      .pipe(
+        map((pokemonList) => pokemonList.find((pokemon) => {
+          return pokemon.name === this.currentPokemon.name;
+        }))
+      );
     if (this.isComparing){
       this.comparisonPokemonInfo$ = this.pokemonCardService.entities$
       .pipe(
@@ -39,16 +50,18 @@ export class PokemonCardDataComponent implements OnInit {
         }))
       );
     }
-
-    this.currentPokemonInfo$ = this.pokemonCardService.entities$
-      .pipe(
-        map((pokemonList) => pokemonList.find((pokemon) => {
-          return pokemon.name === this.currentPokemon.name;
-        }))
-      );
   }
 
   getImage(id: number): string{
     return getPokemonImageUrl(id);
+  }
+
+  getItem(id: number): string{
+    const items: string[] = ['weight', 'height'];
+    return items[id];
+  }
+
+  getGenderName(rate: number): string{
+    return getGender(rate);
   }
 }
