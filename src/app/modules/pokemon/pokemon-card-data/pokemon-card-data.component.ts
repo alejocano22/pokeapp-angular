@@ -16,7 +16,7 @@ import { getPokemonImageUrl } from '../../../utils/images/pokemon-images';
 @Component({
   selector: 'app-pokemon-card-data',
   templateUrl: './pokemon-card-data.component.html',
-  styleUrls: ['./pokemon-card-data.component.css']
+  styleUrls: ['./pokemon-card-data.component.css', 'pokemon-comparison-card-data.component.css']
 })
 export class PokemonCardDataComponent implements OnInit {
   @Input() currentPokemon: PokemonListItem;

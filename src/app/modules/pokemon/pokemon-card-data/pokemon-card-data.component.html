@@ -1,7 +1,7 @@
 <div *ngIf="isComparing else show">
   <ng-container *ngIf="{ currentPokemon: currentPokemonInfo$ | async, comparisonPokemon: comparisonPokemonInfo$ | async } as data">
     <div class="pokemon-comparison-information" *ngIf="(data.currentPokemon && data.comparisonPokemon)">
-      <div class="pokemon-images">
+      <div class="pokemon-comparison-images">
         <img
           class="card-comparison-image"
           src="{{ getImage(data['currentPokemon'].id) }}"
