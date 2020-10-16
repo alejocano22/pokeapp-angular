@@ -1,10 +1,11 @@
+import { NotFoundPageComponent } from './modules/home/not-found-page/not-found-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./modules/home-page/home-page.module').then(module => module.HomePageModule)
+    loadChildren: () => import('./modules/home/home.module').then(module => module.HomeModule)
   },
   {
     path: 'pokemon',
@@ -12,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/'
+    component: NotFoundPageComponent
   }
 ];
 
