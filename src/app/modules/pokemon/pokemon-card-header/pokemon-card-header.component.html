@@ -1,0 +1,12 @@
+<div class="pokemon-header">
+  <button mat-icon-button class="close-button" (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h2 class="pokemon-name">{{ currentPokemon.name.toUpperCase() }}
+    <ng-container *ngIf="isComparing  && comparisonPokemon">
+      vs {{comparisonPokemon.name.toUpperCase()}} 
+    </ng-container>
+  </h2>
+  <button *ngIf="!isComparing" class="compare-button" (click)="onCompare()">Compare</button>
+</div>
+

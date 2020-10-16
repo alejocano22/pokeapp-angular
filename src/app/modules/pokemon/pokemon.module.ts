@@ -19,6 +19,7 @@ import { PokemonCardEntityService } from './services/pokemon-card-entity.service
 import { PokemonCardDataComponent } from './pokemon-card-data/pokemon-card-data.component';
 import { StoreModule } from '@ngrx/store';
 import { pokemonReducer } from './reducers';
+import { PokemonCardHeaderComponent } from './pokemon-card-header/pokemon-card-header.component';
 
 export const pokemonListRoutes: Routes = [
   {
@@ -39,7 +40,7 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 @NgModule({
-  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent, PokemonCardDataComponent],
+  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent, PokemonCardDataComponent, PokemonCardHeaderComponent],
   imports: [
     CommonModule,
     MatCardModule,

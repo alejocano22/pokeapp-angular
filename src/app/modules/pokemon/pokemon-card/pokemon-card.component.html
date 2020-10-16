@@ -1,14 +1,14 @@
-  <div class='pokemon-header'>
-    <button class="menu-button" mat-icon-button (click)="onClose()">
-      <mat-icon>close</mat-icon>
-    </button>
-    <h2 class='pokemon-name'>{{dialogTitle}}</h2>
-  </div>
-  <app-pokemon-card-data 
-    [currentPokemon]="currentPokemon$ | async" 
-    [comparisonPokemon]="comparisonPokemon$ | async" 
-    [isComparing]="isComparing$ | async">
-  </app-pokemon-card-data>
-  <button mat-raised-button (click)="compare()" *ngIf="!isComparing">
-    Compare
-  </button>
+<app-pokemon-card-header
+  [currentPokemon]="currentPokemon$ | async" 
+  [comparisonPokemon]="comparisonPokemon$ | async" 
+  [isComparing]="isComparing$ | async"
+  [dialogRef]="dialogRef"
+></app-pokemon-card-header>
+
+<app-pokemon-card-data 
+  [currentPokemon]="currentPokemon$ | async" 
+  [comparisonPokemon]="comparisonPokemon$ | async" 
+  [isComparing]="isComparing$ | async">
+</app-pokemon-card-data>
+
+<h1>#TODO: Insert chart!</h1>
