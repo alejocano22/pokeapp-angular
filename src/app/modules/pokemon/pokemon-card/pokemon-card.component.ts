@@ -1,13 +1,15 @@
+import { Pokemon } from './../models/pokemon';
 import { getComparisonPokemon, getCurrentPokemon } from './../selectors/pokemon.selectors';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef} from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { compare } from '../actions/pokemon.actions';
 import { PokemonListItem } from '../models/pokemon-list-item';
 import { PokemonState } from '../reducers';
 import { getIsComparing } from '../selectors/pokemon.selectors';
+import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
 
 
 @Component({
@@ -26,8 +28,12 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
   currentPokemon$: Observable<PokemonListItem>;
   comparisonPokemon$: Observable<PokemonListItem>;
 
+  currentPokemonInformation$: Observable<Pokemon>;
+
+
   constructor(public dialogRef: MatDialogRef<PokemonCardComponent>,
-              private store: Store<PokemonState>) {
+              private store: Store<PokemonState>,
+              private pokemonCardService: PokemonCardEntityService) {
   }
 
   async ngOnInit(): Promise<void> {

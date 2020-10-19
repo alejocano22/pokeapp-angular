@@ -11,4 +11,8 @@
   [isComparing]="isComparing$ | async">
 </app-pokemon-card-data>
 
-<h1>#TODO: Insert chart!</h1>
+<app-pokemon-card-chart
+  [currentPokemon]="currentPokemon$ | async" 
+  [comparisonPokemon]="comparisonPokemon$ | async" 
+  [isComparing]="isComparing$ | async">
+</app-pokemon-card-chart>

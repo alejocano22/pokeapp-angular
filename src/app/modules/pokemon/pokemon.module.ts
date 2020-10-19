@@ -21,6 +21,8 @@ import { StoreModule } from '@ngrx/store';
 import { pokemonReducer } from './reducers';
 import { PokemonCardHeaderComponent } from './pokemon-card-header/pokemon-card-header.component';
 import { PokemonComparisonBoxComponent } from './pokemon-comparison-box/pokemon-comparison-box.component';
+import { ChartsModule } from 'ng2-charts';
+import { PokemonCardChartComponent } from './pokemon-card-chart/pokemon-card-chart.component';
 
 export const pokemonListRoutes: Routes = [
   {
@@ -41,12 +43,20 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 @NgModule({
-  declarations: [PokemonListComponent, HomeComponent, PokemonCardComponent, PokemonCardDataComponent, PokemonCardHeaderComponent, PokemonComparisonBoxComponent],
+  declarations: [
+    PokemonListComponent,
+    HomeComponent,
+    PokemonCardComponent,
+    PokemonCardDataComponent,
+    PokemonCardHeaderComponent,
+    PokemonComparisonBoxComponent,
+    PokemonCardChartComponent],
   imports: [
     CommonModule,
     MatCardModule,
     MatDialogModule,
     MatIconModule,
+    ChartsModule,
     RouterModule.forChild(pokemonListRoutes),
     StoreModule.forFeature('pokemonListState', pokemonReducer),
   ],
