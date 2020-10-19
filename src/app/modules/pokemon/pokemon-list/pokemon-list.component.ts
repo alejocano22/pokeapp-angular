@@ -68,4 +68,8 @@ export class PokemonListComponent implements OnInit {
     return getPokemonImageUrl(id);
   }
 
+  onScroll(): void{
+    this.loadMorePokemon();
+  }
+
 }

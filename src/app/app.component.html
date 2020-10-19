@@ -1,6 +1,6 @@
-<mat-sidenav-container fullscreen>
+<!-- <mat-sidenav-container fullscreen>-->
 
-  <mat-sidenav #start>
+  <!-- <mat-sidenav #start>
     <mat-nav-list (click)="start.close()">
       <a mat-list-item routerLink="/">
         <mat-icon>home</mat-icon>
@@ -17,7 +17,15 @@
     <button class="menu-button" mat-icon-button (click)="start.open('mouse')">
       <mat-icon>menu</mat-icon>
     </button>
-  </mat-toolbar>
-
+  </mat-toolbar>  -->
+  
+  <a mat-list-item routerLink="/">
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </a>
+  <a mat-list-item routerLink="/pokemon">
+    <mat-icon>list</mat-icon>
+    <span>Pokemon</span>
+  </a>
   <router-outlet></router-outlet>
-</mat-sidenav-container>
+<!-- </mat-sidenav-container> -->
