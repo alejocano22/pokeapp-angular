@@ -1,17 +1,13 @@
-import { getGender } from './../../../utils/pokemon/pokemon-gender';
 import { Component, Input, OnInit } from '@angular/core';
-import { async, combineLatest, forkJoin, merge, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Pokemon } from '../models/pokemon';
-import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
-
-import { select, Store } from '@ngrx/store';
 import { PokemonState } from '../reducers';
 import { PokemonListItem } from '../models/pokemon-list-item';
-
-import { getPokemonImageUrl } from '../../../utils/images/pokemon-images';
-
-
+import { Pokemon } from '../models/pokemon';
+import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
+import { getGender } from 'src/app/utils/pokemon/pokemon-gender';
+import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
 
 @Component({
   selector: 'app-pokemon-card-data',
@@ -26,16 +22,9 @@ export class PokemonCardDataComponent implements OnInit {
   comparisonPokemonInfo$: Observable<Pokemon>;
   pokemonDetailTitle = ['Height', 'Weight'];
 
-
-  constructor(private pokemonCardService: PokemonCardEntityService,
-              private store: Store<PokemonState>) {
-
-              }
+  constructor(private pokemonCardService: PokemonCardEntityService) { }
 
   async ngOnInit(): Promise<void> {
-
-
-
     this.currentPokemonInfo$ = this.pokemonCardService.entities$
       .pipe(
         map((pokemonList) => pokemonList.find((pokemon) => {

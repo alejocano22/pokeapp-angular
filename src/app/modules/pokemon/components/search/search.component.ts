@@ -1,7 +1,7 @@
-import { updateSearchInput } from './../actions/pokemon.actions';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PokemonState } from '../reducers';
+import { PokemonState } from '../../reducers';
+import { updateSearchInput } from '../../actions/pokemon.actions';
 
 @Component({
   selector: 'app-search',

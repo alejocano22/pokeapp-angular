@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { MatDialogRef } from '@angular/material/dialog';
-import { compare } from '../actions/pokemon.actions';
-import { PokemonListItem } from '../models/pokemon-list-item';
+import { PokemonState } from '../../reducers';
+import { compare } from '../../actions/pokemon.actions';
+import { PokemonListItem } from '../../models/pokemon-list-item';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
-import { PokemonState } from '../reducers';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pokemon-card-header',
@@ -24,7 +24,7 @@ export class PokemonCardHeaderComponent {
   }
 
   onCompare(): void {
-    this.dialogRef.close();
     this.store.dispatch(compare());
+    this.dialogRef.close();
   }
 }

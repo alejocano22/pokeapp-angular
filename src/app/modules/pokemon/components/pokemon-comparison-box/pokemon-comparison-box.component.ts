@@ -1,5 +1,5 @@
-import { PokemonListItem } from './../models/pokemon-list-item';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PokemonListItem } from '../../models/pokemon-list-item';
 
 @Component({
   selector: 'app-pokemon-comparison-box',
