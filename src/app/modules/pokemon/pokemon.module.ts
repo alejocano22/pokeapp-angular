@@ -24,6 +24,10 @@ import { PokemonComparisonBoxComponent } from './pokemon-comparison-box/pokemon-
 import { ChartsModule } from 'ng2-charts';
 import { PokemonCardChartComponent } from './pokemon-card-chart/pokemon-card-chart.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SharedModule } from '../shared/shared.module';
+
+
+
 
 export const pokemonListRoutes: Routes = [
   {
@@ -61,6 +65,7 @@ const entityMetadata: EntityMetadataMap = {
     InfiniteScrollModule,
     RouterModule.forChild(pokemonListRoutes),
     StoreModule.forFeature('pokemonListState', pokemonReducer),
+
   ],
   providers: [
     PokemonListEntityService,
