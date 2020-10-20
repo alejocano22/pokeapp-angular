@@ -11,12 +11,14 @@ export interface PokemonState {
   isComparing: boolean;
   currentPokemon: PokemonListItem;
   comparisonPokemon: PokemonListItem;
+  search: string;
 }
 
 export const initialAuthState: PokemonState = {
   isComparing: false,
   currentPokemon: undefined,
   comparisonPokemon: undefined,
+  search: ''
 };
 
 export const pokemonReducer = createReducer(
@@ -37,6 +39,12 @@ export const pokemonReducer = createReducer(
     return {
       ...state,
       comparisonPokemon: action.pokemon
+    };
+  }),
+  on(PokemonActions.updateSearchInput, (state, action) => {
+    return {
+      ...state,
+      search: action.search
     };
   })
 );

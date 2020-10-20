@@ -1,3 +1,4 @@
+import { getSearchInput } from './../selectors/pokemon.selectors';
 import { updateComparisonPokemon, updateCurrentPokemon } from './../actions/pokemon.actions';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -16,6 +17,7 @@ import { take } from 'rxjs/operators';
 import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
 
 import { speciesApi } from 'src/app/utils/const/pokeapi';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -26,12 +28,14 @@ export class PokemonListComponent implements OnInit {
   @Input() pokemonListItems: PokemonListItem[];
   nextOffset = 20;
   isComparing: boolean;
+  searchInput: string;
 
   constructor(private dialog: MatDialog, private courseService: PokemonListEntityService,
               private pokemonCardService: PokemonCardEntityService,
               private store: Store<PokemonState>) { }
 
   ngOnInit(): void {
+    this.store.pipe(select(getSearchInput)).subscribe(searchInput => this.searchInput = searchInput);
   }
 
   loadMorePokemon(): void {
@@ -42,7 +46,7 @@ export class PokemonListComponent implements OnInit {
     this.nextOffset  += 20;
   }
 
-  async openPokemonCard(pokemon: PokemonListItem): Promise<void> {
+  openPokemonCard(pokemon: PokemonListItem): void {
     this.pokemonCardService.getWithQuery({
       url: pokemon.url,
       speciesUrl: speciesApi + pokemon.name
@@ -52,8 +56,10 @@ export class PokemonListComponent implements OnInit {
       dialogTitle: pokemon.name,
       pokemon,
     };
+    this.store.pipe(select(getIsComparing)).subscribe(isComparing => {
+      this.isComparing = isComparing;
+    });
 
-    this.isComparing = await this.store.pipe(select(getIsComparing), take(1)).toPromise();
     if (this.isComparing){
       this.store.dispatch(updateComparisonPokemon({pokemon}));
     }else{

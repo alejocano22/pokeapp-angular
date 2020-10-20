@@ -18,3 +18,8 @@ export const getComparisonPokemon = createSelector(
   (state) => state.comparisonPokemon
 );
 
+export const getSearchInput = createSelector(
+  selectPokemonState,
+  (state) => state.search
+);
+

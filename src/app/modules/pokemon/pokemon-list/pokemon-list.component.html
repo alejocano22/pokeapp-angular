@@ -2,7 +2,7 @@
   class="pokemon-list" 
   infiniteScroll
   (scrolled)="onScroll()"> 
-  <div *ngFor="let pokemon of pokemonListItems" (click)="openPokemonCard(pokemon)">
+  <div *ngFor="let pokemon of pokemonListItems | pokemonFilter: searchInput" (click)="openPokemonCard(pokemon)">
     <div class="pokemon-item">
       <img class="pokemon-image" src="{{getImage(pokemon.name)}}">
       <h2 class="pokemon-name">{{pokemon.name.toUpperCase()}}</h2>

@@ -25,6 +25,8 @@ import { ChartsModule } from 'ng2-charts';
 import { PokemonCardChartComponent } from './pokemon-card-chart/pokemon-card-chart.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedModule } from '../shared/shared.module';
+import { SearchComponent } from './search/search.component';
+import { PokemonFilterPipe } from './pipes/pokemon-filter.pipe';
 
 
 
@@ -55,7 +57,9 @@ const entityMetadata: EntityMetadataMap = {
     PokemonCardDataComponent,
     PokemonCardHeaderComponent,
     PokemonComparisonBoxComponent,
-    PokemonCardChartComponent],
+    PokemonCardChartComponent,
+    SearchComponent,
+    PokemonFilterPipe],
   imports: [
     CommonModule,
     MatCardModule,

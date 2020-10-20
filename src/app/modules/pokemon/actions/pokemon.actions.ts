@@ -15,3 +15,8 @@ export const updateComparisonPokemon = createAction(
   '[Pokemon Card] Update Comparison Pokemon',
   props<{ pokemon: PokemonListItem }>()
 );
+
+export const updateSearchInput = createAction(
+  '[Search Input] Update Search Input',
+  props<{ search: string }>()
+);
