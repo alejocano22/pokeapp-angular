@@ -1,19 +1,11 @@
-/* position: fixed;
-  top: 1rem;
-  right: 5rem;
-  z-index: 2;
-  margin: 0; */
-
 .search {
+  outline: none;
   position: fixed;
   top: 1rem;
   right: 5rem;
   z-index: 2;
-  margin: 0;
-
-  outline: none;
   height: 1.2rem;
-  width: 8rem;
+  width: 10rem;
   border: 2px solid var(--pokemon-gray);
   border-radius: 6px;
   font-size: 1rem;

@@ -1,13 +1,19 @@
-<div class="main-header">
-  <nav class="nav-bar">
-    <div class="nav-items">
-      <a routerLink="/" class="link" routerLinkActive="active-link">
-        <span>PokéApp</span>
-        <!-- <mat-icon>home</mat-icon> -->
-      </a>
-      <a routerLink="/pokemon" class="link" routerLinkActive="active-link">
-        <span>Pokemon</span>
-      </a>
-    </div>
-  </nav>
-</div>
+<nav class="nav-bar">
+  <div class="nav-items">
+    <a 
+      class="link"
+      routerLink="/" 
+      routerLinkActive="active-link" 
+      [routerLinkActiveOptions]="{ exact: true }">
+      <span class="link-text">PokéApp</span>
+      <mat-icon class="icon">home</mat-icon>
+    </a>
+    <a
+      routerLink="/pokemon" 
+      class="link" 
+      routerLinkActive="active-link">
+      <span class="link-text">Pokémon</span>
+      <mat-icon class="icon">list</mat-icon>
+    </a>
+  </div>
+</nav>
