@@ -1,0 +1,69 @@
+<div *ngIf="isComparing else show">
+  <div class="pokemon-comparison-information" *ngIf="currentPokemonInfo && comparisonPokemonInfo">
+    <div class="pokemon-comparison-images">
+      <img
+        class="card-comparison-image"
+        src="{{ getImage(currentPokemonInfo.id) }}"
+        alt="{{ currentPokemonInfo.name }}">
+      <img
+        class="card-comparison-image"
+        src="{{ getImage(comparisonPokemonInfo.id) }}"
+        alt="{{ comparisonPokemonInfo.name }}">
+    </div>
+    <div class="pokemon-comparison-details">
+      <div class="pokemon-comparison-detail-item">
+        <h4 class="pokemon-comparison-detail-description">{{ getGenderName(currentPokemonInfo.genderRate) }}</h4>
+        <h3 class="pokemon-comparison-detail-title">Gender</h3>
+        <h4 class="pokemon-comparison-detail-description">{{ getGenderName(comparisonPokemonInfo.genderRate) }}</h4>
+      </div>
+      <div class="pokemon-comparison-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
+        <h4 class="pokemon-comparison-detail-description">{{ currentPokemonInfo[getItem(i)] }}</h4>
+        <h3 class="pokemon-comparison-detail-title">{{ detail }}</h3>
+        <h4 class="pokemon-comparison-detail-description">{{ comparisonPokemonInfo[getItem(i)] }}</h4>
+      </div>
+      <div class="pokemon-comparison-detail-item">
+        <ul class="pokemon-comparison-detail-list" > 
+          <li class="pokemon-comparison-detail-description" *ngFor="let ability of currentPokemonInfo.abilities">{{ ability.ability.name }}</li>
+        </ul>
+        <h3 class="pokemon-comparison-detail-title">Abilities</h3>
+        <ul class="pokemon-comparison-detail-list" > 
+          <li class="pokemon-comparison-detail-description" *ngFor="let ability of currentPokemonInfo.abilities">{{ ability.ability.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #show>
+  <div class="pokemon-information" *ngIf="currentPokemonInfo" >
+    <img
+      class="card-image"
+      src="{{ getImage(currentPokemonInfo.id) }}"
+      alt="{{ currentPokemonInfo.name }}">
+    <div>
+      <p class="pokemon-description">{{ currentPokemonInfo.description }}</p>
+      <div class="pokemon-details"> 
+        <div class="pokemon-detail-item">
+          <h3 class="pokemon-detail-title">Gender</h3>
+          <h4 clas="pokemon-detail-description">{{ getGenderName(currentPokemonInfo.genderRate) }}</h4>
+        </div>
+        <div class="pokemon-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
+          <h3 class="pokemon-detail-title">{{ detail }}</h3>
+          <h4 clas="pokemon-detail-description">{{ currentPokemonInfo[getItem(i)] }}</h4>
+        </div>
+        <div class="pokemon-detail-item">
+          <h3 class="pokemon-detail-title">Types</h3>
+          <ul class="pokemon-detail-list" > 
+            <li class="pokemon-detail-description" *ngFor="let type of currentPokemonInfo.types">{{ type.type.name }}</li>
+          </ul>
+        </div>
+        <div class="pokemon-detail-item">
+          <h3 class="pokemon-detail-title">Abilities</h3>
+          <ul class="pokemon-detail-list"> 
+            <li class="pokemon-detail-description" *ngFor="let ability of currentPokemonInfo.abilities">{{ ability.ability.name }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template> 

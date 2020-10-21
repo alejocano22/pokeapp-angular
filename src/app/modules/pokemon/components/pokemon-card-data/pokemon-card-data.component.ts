@@ -1,11 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PokemonState } from '../reducers';
-import { PokemonListItem } from '../models/pokemon-list-item';
-import { Pokemon } from '../models/pokemon';
-import { PokemonCardEntityService } from '../services/pokemon-card-entity.service';
+import { PokemonCardEntityService } from '../../services/pokemon-card-entity.service';
+import { PokemonListItem } from '../../models/pokemon-list-item';
+import { Pokemon } from '../../models/pokemon';
 import { getGender } from 'src/app/utils/pokemon/pokemon-gender';
 import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
 
@@ -18,26 +16,33 @@ export class PokemonCardDataComponent implements OnInit {
   @Input() currentPokemon: PokemonListItem;
   @Input() comparisonPokemon: PokemonListItem;
   @Input() isComparing: boolean;
-  currentPokemonInfo$: Observable<Pokemon>;
   comparisonPokemonInfo$: Observable<Pokemon>;
   pokemonDetailTitle = ['Height', 'Weight'];
 
+  currentPokemonInfo: Pokemon;
+  comparisonPokemonInfo: Pokemon;
+
   constructor(private pokemonCardService: PokemonCardEntityService) { }
 
-  async ngOnInit(): Promise<void> {
-    this.currentPokemonInfo$ = this.pokemonCardService.entities$
+  ngOnInit(): void {
+    this.pokemonCardService.entities$
       .pipe(
-        map((pokemonList) => pokemonList.find((pokemon) => {
-          return pokemon.name === this.currentPokemon.name;
-        }))
-      );
-    if (this.isComparing){
-      this.comparisonPokemonInfo$ = this.pokemonCardService.entities$
+        map((pokemonList) => pokemonList.find((pokemon) => pokemon.name === this.currentPokemon.name))
+      ).subscribe(pokemon => {
+        if (pokemon) {
+          this.currentPokemonInfo = pokemon;
+        }
+      });
+
+    if (this.isComparing) {
+      this.pokemonCardService.entities$
       .pipe(
-        map((pokemonList) => pokemonList.find((pokemon) => {
-          return pokemon.name === this.comparisonPokemon.name;
-        }))
-      );
+        map((pokemonList) => pokemonList.find((pokemon) => pokemon.name === this.comparisonPokemon.name))
+      ).subscribe(pokemon => {
+        if (pokemon) {
+          this.comparisonPokemonInfo = pokemon;
+        }
+      });
     }
   }
 
