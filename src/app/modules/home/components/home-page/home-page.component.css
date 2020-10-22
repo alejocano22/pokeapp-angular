@@ -35,22 +35,6 @@
   font-weight: 700;
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  height: 5rem;
-  background: var(--pokemon-dark-red);
-}
-
-.footer-message {
-  margin: 0;
-  color: var(--pokemon-white);
-  font-size: 1rem;
-  text-align: center;
-}
-
 @media (max-width: 900px) {
   .welcome-image {
     width: 15rem;
@@ -64,13 +48,5 @@
 
   .home-subtitle {
     font-size: 2rem;
-  }
-
-  .footer {
-    height: 3rem;
-  }
-
-  .footer-message {
-    font-size: 0.8rem;
   }
 }
