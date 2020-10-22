@@ -1,5 +1,5 @@
-import { PokemonState } from '../reducers/index';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { PokemonState } from '../reducers/index';
 
 export const selectPokemonState = createFeatureSelector<PokemonState>('pokemonListState');
 

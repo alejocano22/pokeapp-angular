@@ -1,8 +1,5 @@
-import { PokemonListItem } from './../models/pokemon-list-item';
-import {
-  createReducer,
-  on,
-} from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
+import { PokemonListItem } from '../models/pokemon-list-item';
 import { PokemonActions } from '../actions/action-types';
 
 export interface PokemonState {

@@ -1,10 +1,9 @@
-import { Pokemon } from './../models/pokemon';
+import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { DefaultDataService, HttpUrlGenerator } from '@ngrx/data';
 import { map } from 'rxjs/operators';
-
+import { Pokemon } from '../models/pokemon';
 
 @Injectable()
 export class PokemonCardDataService extends DefaultDataService<Pokemon>{
@@ -14,10 +13,9 @@ export class PokemonCardDataService extends DefaultDataService<Pokemon>{
 
   getWithQuery(params: any): Observable<Pokemon[]>{
     const pokemonArray = [];
-
     return combineLatest([this.http.get(params.url), this.http.get(params.speciesUrl)])
       .pipe(
-        map(res =>  {
+        map(res => {
           const pokemonInfo = res[0];
           const speciesInfo = res[1];
           const pokemon: Pokemon = {

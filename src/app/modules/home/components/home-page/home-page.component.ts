@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { PokemonState } from 'src/app/modules/pokemon/reducers';
 import { PokemonListItem } from 'src/app/modules/pokemon/models/pokemon-list-item';
@@ -18,5 +18,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.favoritePokemonList$ = this.store.select(getFavoritePokemonList);
   }
-
 }

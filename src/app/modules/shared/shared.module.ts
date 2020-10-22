@@ -5,11 +5,17 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
 import { InfoMessageComponent } from './components/info-message/info-message.component';
 
 @NgModule({
-  declarations: [AlertMessageComponent, InfoMessageComponent],
+  declarations: [
+    AlertMessageComponent,
+    InfoMessageComponent
+  ],
   imports: [
     CommonModule,
     MatIconModule,
   ],
-  exports: [AlertMessageComponent, InfoMessageComponent]
+  exports: [
+    AlertMessageComponent,
+    InfoMessageComponent
+  ]
 })
 export class SharedModule { }

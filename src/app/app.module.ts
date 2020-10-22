@@ -1,17 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
-
-import {metaReducers, reducers} from './reducers';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {StoreModule} from '@ngrx/store';
+import { RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
+import { metaReducers, reducers} from './reducers';
+import { MatIconModule} from '@angular/material/icon';
+import { StoreModule} from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EntityDataModule } from '@ngrx/data';
@@ -30,7 +25,7 @@ import { SharedModule } from './modules/shared/shared.module';
     HttpClientModule,
     MatIconModule,
     SharedModule,
-    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot({}),

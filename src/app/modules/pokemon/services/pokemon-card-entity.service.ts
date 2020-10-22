@@ -7,5 +7,4 @@ export class PokemonCardEntityService extends EntityCollectionServiceBase<Pokemo
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
     super('Pokemon', serviceElementsFactory);
   }
-
 }

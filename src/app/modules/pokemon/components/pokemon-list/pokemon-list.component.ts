@@ -8,7 +8,7 @@ import { PokemonCardEntityService } from '../../services/pokemon-card-entity.ser
 import { PokemonListItem } from '../../models/pokemon-list-item';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
-import { speciesApi } from 'src/app/utils/const/pokeapi';
+import { speciesApi } from 'src/app/utils/url/pokeapi';
 import { defaultDialogConfig } from 'src/app/utils/dialog/default-dialog-config';
 import { MatDialog } from '@angular/material/dialog';
 

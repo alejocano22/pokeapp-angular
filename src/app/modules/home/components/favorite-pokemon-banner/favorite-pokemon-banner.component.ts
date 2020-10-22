@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PokemonListItem } from 'src/app/modules/pokemon/models/pokemon-list-item';
 import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
 
