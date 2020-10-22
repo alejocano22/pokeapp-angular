@@ -6,7 +6,9 @@
       class="welcome-image">
     <h1 class="welcome-message">Welcome!</h1>
   </div>
-  <h2 class="home-subtitle">FAVORITE POKÉMON</h2>
+  <div class="favorite-title">
+    <app-title [title]="'Favorite Pokémon'"></app-title>
+  </div>  
   <app-favorite-pokemon-banner [favoritePokemonList]="favoritePokemonList$ | async"></app-favorite-pokemon-banner>
   <app-footer></app-footer>
 </div>

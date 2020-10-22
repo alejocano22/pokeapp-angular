@@ -1,7 +1,10 @@
 <app-search></app-search>
 
 <div class="pokemon-list-home">
-  <h1 class="list-title">List of Pokémon</h1>
+  <div class="list-title">
+    <app-title [title]="'List of Pokémon'"></app-title>
+  </div>
+  
   <app-pokemon-list 
     class="pokemon-list" 
     [pokemonList]="pokemonList$ | async"

@@ -1,0 +1,14 @@
+.title {
+  margin: 0.1rem;
+  font-size: 3rem;
+  -webkit-text-stroke: 0.01rem var(--pokemon-black);
+  color: var(--pokemon-red);
+  text-align: center;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 2rem;
+  }
+}

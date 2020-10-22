@@ -4,12 +4,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TitleComponent } from './components/title/title.component';
 
 @NgModule({
   declarations: [
     AlertMessageComponent,
     InfoMessageComponent,
-    FooterComponent
+    FooterComponent,
+    TitleComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { FooterComponent } from './components/footer/footer.component';
   exports: [
     AlertMessageComponent,
     InfoMessageComponent,
-    FooterComponent
+    FooterComponent,
+    TitleComponent
   ]
 })
 export class SharedModule { }
