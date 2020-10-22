@@ -23,3 +23,8 @@ export const getSearchInput = createSelector(
   (state) => state.search
 );
 
+export const getFavoritePokemonList = createSelector(
+  selectPokemonState,
+  (state) => state.favoritePokemonList
+);
+

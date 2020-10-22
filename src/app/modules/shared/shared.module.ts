@@ -1,25 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { RouterModule, Routes } from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
-
-export const headerRoutes: Routes = [
-  {
-    path: '',
-    component: HeaderComponent,
-
-  }
-];
+import { MatIconModule } from '@angular/material/icon';
+import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 
 @NgModule({
-  declarations: [ HeaderComponent],
+  declarations: [ AlertMessageComponent],
   imports: [
     CommonModule,
     MatIconModule,
-    RouterModule.forChild(headerRoutes),
-
   ],
-  exports: [HeaderComponent]
+  exports: [ AlertMessageComponent]
 })
 export class SharedModule { }

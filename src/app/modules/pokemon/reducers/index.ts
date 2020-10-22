@@ -1,24 +1,28 @@
-import { updateComparisonPokemon } from './../actions/pokemon.actions';
 import { PokemonListItem } from './../models/pokemon-list-item';
 import {
   createReducer,
   on,
 } from '@ngrx/store';
 import { PokemonActions } from '../actions/action-types';
-import { act } from '@ngrx/effects';
 
 export interface PokemonState {
   isComparing: boolean;
   currentPokemon: PokemonListItem;
   comparisonPokemon: PokemonListItem;
   search: string;
+  favoritePokemonList: PokemonListItem[];
 }
 
 export const initialAuthState: PokemonState = {
   isComparing: false,
   currentPokemon: undefined,
   comparisonPokemon: undefined,
-  search: ''
+  search: '',
+  favoritePokemonList: [
+    { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+    { name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/4/' },
+    { name: 'squirtle', url: 'https://pokeapi.co/api/v2/pokemon/7/' },
+  ]
 };
 
 export const pokemonReducer = createReducer(
@@ -45,6 +49,18 @@ export const pokemonReducer = createReducer(
     return {
       ...state,
       search: action.search
+    };
+  }),
+  on(PokemonActions.addFavoritePokemon, (state, action) => {
+    return {
+      ...state,
+      favoritePokemonList: [...state.favoritePokemonList, action.pokemon]
+    };
+  }),
+  on(PokemonActions.deleteFavoritePokemon, (state, action) => {
+    return {
+      ...state,
+      favoritePokemonList: [...state.favoritePokemonList.filter((pokemon) => !(pokemon.name === action.pokemon.name))]
     };
   })
 );

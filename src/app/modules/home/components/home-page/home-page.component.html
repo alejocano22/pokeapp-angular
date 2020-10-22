@@ -1,3 +1,14 @@
 <div class="home-page">
-  <h1 class="home-title">WELCOME</h1>
+  <div class="welcome">
+    <img
+      src="../../../../../assets/images/pokeBackground.png"
+      alt="welcome"
+      class="welcome-image">
+    <h1 class="welcome-message">Welcome!</h1>
+  </div>
+  <h2 class="home-subtitle">FAVORITE POKÉMON</h2>
+  <app-favorite-pokemon-banner [favoritePokemonList]="favoritePokemonList$ | async"></app-favorite-pokemon-banner>
+  <footer class="footer">
+    <p class="footer-message">PokéApp | @alejocano22 HTML Template | All Rights Reserved.</p>
+  </footer> 
 </div>

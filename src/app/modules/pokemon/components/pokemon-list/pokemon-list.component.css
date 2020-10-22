@@ -1,8 +1,8 @@
 .pokemon-list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 2rem;
-  margin: 0 5rem;
+  grid-gap: 2rem 1.5rem;
+  margin: 0 3rem;
   width: 100%;
   max-width: 80rem;
 }
@@ -37,6 +37,21 @@
 
 .pokemon-item:hover {
   background: var(--pokemon-light-gray);
+}
+
+.icon {
+  font-size: 0.8rem;
+  color: var(--pokemon-white);
+}
+
+.icon:hover {
+  font-size: 0.8rem;
+  color: var(--pokemon-dark-yellow);
+}
+
+.icon-selected {
+  font-size: 0.8rem;
+  color: var(--pokemon-yellow);
 }
 
 @media (max-width: 900px) {

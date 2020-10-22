@@ -20,3 +20,13 @@ export const updateSearchInput = createAction(
   '[Search Input] Update Search Input',
   props<{ search: string }>()
 );
+
+export const addFavoritePokemon = createAction(
+  '[List Of Pokemon] Add Favorite Pokemon',
+  props<{ pokemon: PokemonListItem }>()
+);
+
+export const deleteFavoritePokemon = createAction(
+  '[List Of Pokemon] Delete Favorite Pokemon',
+  props<{ pokemon: PokemonListItem }>()
+);

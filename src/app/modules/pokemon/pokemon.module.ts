@@ -24,7 +24,7 @@ import { PokemonCardChartComponent } from './components/pokemon-card-chart/pokem
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SearchComponent } from './components/search/search.component';
 import { PokemonFilterPipe } from './pipes/pokemon-filter.pipe';
-
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -64,6 +64,7 @@ const entityMetadata: EntityMetadataMap = {
     MatIconModule,
     ChartsModule,
     InfiniteScrollModule,
+    SharedModule,
     RouterModule.forChild(pokemonListRoutes),
     StoreModule.forFeature('pokemonListState', pokemonReducer),
 

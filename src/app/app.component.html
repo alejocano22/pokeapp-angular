@@ -1,35 +1,21 @@
-<!-- <mat-sidenav-container fullscreen>-->
-
-  <!-- <mat-sidenav #start>
-    <mat-nav-list (click)="start.close()">
-      <a mat-list-item routerLink="/">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-      </a>
-      <a mat-list-item routerLink="/pokemon">
-        <mat-icon>list</mat-icon>
-        <span>Pokemon</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-toolbar color="primary">
-    <button class="menu-button" mat-icon-button (click)="start.open('mouse')">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar>  -->
-  
-  <!-- <a mat-list-item routerLink="/">
-    <mat-icon>home</mat-icon>
-    <span>Home</span>
-  </a>
-  <a mat-list-item routerLink="/pokemon">
-    <mat-icon>list</mat-icon>
-    <span>Pokemon</span>
-  </a> -->
-  
-<!-- </mat-sidenav-container> -->
-
-<app-header></app-header>
+<nav class="nav-bar">
+  <div class="nav-items">
+    <a 
+      class="link"
+      routerLink="/" 
+      routerLinkActive="active-link" 
+      [routerLinkActiveOptions]="{ exact: true }">
+      <span class="link-text">PokéApp</span>
+      <mat-icon class="icon">home</mat-icon>
+    </a>
+    <a
+      routerLink="/pokemon" 
+      class="link" 
+      routerLinkActive="active-link">
+      <span class="link-text">Pokémon</span>
+      <mat-icon class="icon">list</mat-icon>
+    </a>
+  </div>
+</nav>
 
 <router-outlet></router-outlet>

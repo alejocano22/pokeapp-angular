@@ -1,3 +1,4 @@
+<app-alert-message [message]="maxFavoriteMessage" *ngIf="maxFavorite"></app-alert-message>
 <div 
   class="pokemon-list" 
   infiniteScroll
@@ -6,8 +7,11 @@
     class="pokemon-item" 
     *ngFor="let pokemon of pokemonListItems | pokemonFilter: searchInput" 
     (click)="openPokemonCard(pokemon)">
-    <img class="pokemon-image" src="{{ getImage(pokemon.name) }}">
-    <h2 class="pokemon-name">{{ pokemon.name.toUpperCase() }}</h2>
+    <img class="pokemon-image" src="{{ getImage(pokemon.name) }}" alt="{{ pokemon.name }}">
+    <h2 class="pokemon-name">
+      {{ pokemon.name.toUpperCase() }}
+      <mat-icon class="icon" [ngClass]="{'icon-selected' : getFavoriteListIndex(pokemon.name) !== -1}" (click)="handleFavorite($event, pokemon)">favorite</mat-icon>
+    </h2>
   </div>
 </div>
 
