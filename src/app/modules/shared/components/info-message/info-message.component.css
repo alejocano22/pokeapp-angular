@@ -1,4 +1,4 @@
-.compare-pokemon-box {
+.box {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -14,13 +14,13 @@
   width: 12rem;
 }
 
-.compare-pokemon-box-title {
+.main-message {
   font-size: 1rem;
   margin: 0;
   border-bottom: 2px solid var(--pokemon-light-gray);
 }
 
-.compare-pokemon {
+.message {
   margin: 0;
   padding: 0.5rem 0 0 0;
   font-size: 1.2rem;
@@ -28,16 +28,16 @@
 }
 
 @media (max-width: 900px) {
-  .compare-pokemon-box {
+  .box {
     right: 2rem;
     width: 8rem;
   }
 
-  .compare-pokemon-box-title {
+  .main-message {
     font-size: 0.6rem;
   }
 
-  .compare-pokemon {
+  .message {
     padding: 0.3rem 0 0 0;
     font-size: 0.8rem;
   }

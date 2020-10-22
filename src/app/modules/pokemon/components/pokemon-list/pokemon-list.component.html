@@ -1,11 +1,12 @@
 <app-alert-message [message]="maxFavoriteMessage" *ngIf="maxFavorite"></app-alert-message>
+<app-info-message [mainMessage]="comparisonMessage" [message]="currentPokemon.name" *ngIf="isComparing"></app-info-message>
 <div 
   class="pokemon-list" 
   infiniteScroll
   (scrolled)="onScroll()"> 
   <div 
     class="pokemon-item" 
-    *ngFor="let pokemon of pokemonListItems | pokemonFilter: searchInput" 
+    *ngFor="let pokemon of pokemonList | pokemonFilter: searchInput" 
     (click)="openPokemonCard(pokemon)">
     <img class="pokemon-image" src="{{ getImage(pokemon.name) }}" alt="{{ pokemon.name }}">
     <h2 class="pokemon-name">

@@ -6,6 +6,7 @@
 
 .list-title {
   margin: 2rem;
+  margin-top: 7rem;
   font-size: 3rem;
   -webkit-text-stroke: 0.01rem var(--pokemon-black);
   color: var(--pokemon-red);

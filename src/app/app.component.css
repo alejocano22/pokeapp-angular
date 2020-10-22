@@ -1,9 +1,10 @@
 .nav-bar {
-  position: sticky;
+  position: fixed;
   display: flex;
   justify-content: center;
   top: 0;
   z-index: 1;
+  width: 100%;
   padding: 1rem 0;
   background: var(--pokemon-dark-red);
   box-shadow: 2px 2px 2px 2px var(--pokemon-gray);

@@ -1,11 +1,8 @@
-import { Observable, Subscription } from 'rxjs';
-import { getFavoritePokemonList } from './../../selectors/pokemon.selectors';
 import { addFavoritePokemon, deleteFavoritePokemon } from './../../actions/pokemon.actions';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { PokemonState } from '../../reducers';
 import { updateComparisonPokemon, updateCurrentPokemon } from '../../actions/pokemon.actions';
-import { getSearchInput, getIsComparing } from '../../selectors/pokemon.selectors';
 import { PokemonListEntityService } from '../../services/pokemon-list-entity.service';
 import { PokemonCardEntityService } from '../../services/pokemon-card-entity.service';
 import { PokemonListItem } from '../../models/pokemon-list-item';
@@ -21,13 +18,14 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.css']
 })
-export class PokemonListComponent implements OnInit, OnDestroy {
-  @Input() pokemonListItems: PokemonListItem[];
+export class PokemonListComponent {
+  @Input() pokemonList: PokemonListItem[];
+  @Input() favoritePokemonList: PokemonListItem[];
+  @Input() currentPokemon: PokemonListItem;
+  @Input() isComparing: boolean;
+  @Input() searchInput: string;
   maxFavoriteMessage = 'You can only have 5 favorite pokemon!';
-  favoritePokemonList$: Subscription;
-  favoritePokemonList: PokemonListItem[];
-  searchInput: string;
-  isComparing: boolean;
+  comparisonMessage = 'Comparing pokemon...';
   nextOffset = 20;
   maxFavorite: boolean;
 
@@ -35,13 +33,6 @@ export class PokemonListComponent implements OnInit, OnDestroy {
               private pokemonCardService: PokemonCardEntityService,
               private store: Store<PokemonState>,
               private dialog: MatDialog) { }
-
-  ngOnInit(): void {
-    this.store.pipe(select(getSearchInput)).subscribe((searchInput) => this.searchInput = searchInput);
-    this.favoritePokemonList$ = this.store.select(getFavoritePokemonList).subscribe(favoritePokemonList => {
-      this.favoritePokemonList = favoritePokemonList;
-    });
-  }
 
   loadMorePokemon(): void {
     this.courseService.getWithQuery({
@@ -57,7 +48,6 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       speciesUrl: speciesApi + pokemon.name
     });
 
-    this.store.pipe(select(getIsComparing)).subscribe((isComparing) => this.isComparing = isComparing);
     if (this.isComparing) {
       this.store.dispatch(updateComparisonPokemon({ pokemon }));
     } else {
@@ -69,7 +59,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   }
 
   getImage(name: string): string{
-    const id = this.pokemonListItems.findIndex((pokemon) => pokemon.name === name) + 1;
+    const id = this.pokemonList.findIndex((pokemon) => pokemon.name === name) + 1;
     return getPokemonImageUrl(id);
   }
 
@@ -93,10 +83,6 @@ export class PokemonListComponent implements OnInit, OnDestroy {
 
   getFavoriteListIndex(pokemonName: string): number {
     return this.favoritePokemonList.findIndex((pokemon) => pokemon.name === pokemonName);
-  }
-
-  ngOnDestroy(): void {
-    this.favoritePokemonList$.unsubscribe();
   }
 
 }

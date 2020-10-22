@@ -6,7 +6,7 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
 import { FavoritePokemonBannerComponent } from './components/favorite-pokemon-banner/favorite-pokemon-banner.component';
 import { pokemonReducer } from '../pokemon/reducers';
 import { StoreModule } from '@ngrx/store';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 export const homeRoutes: Routes = [
   {

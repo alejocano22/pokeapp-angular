@@ -18,15 +18,12 @@ import { PokemonCardDataComponent } from './components/pokemon-card-data/pokemon
 import { StoreModule } from '@ngrx/store';
 import { pokemonReducer } from './reducers';
 import { PokemonCardHeaderComponent } from './components/pokemon-card-header/pokemon-card-header.component';
-import { PokemonComparisonBoxComponent } from './components/pokemon-comparison-box/pokemon-comparison-box.component';
 import { ChartsModule } from 'ng2-charts';
 import { PokemonCardChartComponent } from './components/pokemon-card-chart/pokemon-card-chart.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SearchComponent } from './components/search/search.component';
 import { PokemonFilterPipe } from './pipes/pokemon-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
-
-
 
 export const pokemonListRoutes: Routes = [
   {
@@ -35,7 +32,6 @@ export const pokemonListRoutes: Routes = [
     resolve: {
       pokemonListItems: PokemonListResolver
     }
-
   }
 ];
 
@@ -53,7 +49,6 @@ const entityMetadata: EntityMetadataMap = {
     PokemonCardComponent,
     PokemonCardDataComponent,
     PokemonCardHeaderComponent,
-    PokemonComparisonBoxComponent,
     PokemonCardChartComponent,
     SearchComponent,
     PokemonFilterPipe],
@@ -67,7 +62,6 @@ const entityMetadata: EntityMetadataMap = {
     SharedModule,
     RouterModule.forChild(pokemonListRoutes),
     StoreModule.forFeature('pokemonListState', pokemonReducer),
-
   ],
   providers: [
     PokemonListEntityService,
@@ -82,7 +76,6 @@ export class PokemonModule {
               private entityDataService: EntityDataService,
               private pokemonListDataService: PokemonListDataService,
               private pokemonCardDataService: PokemonCardDataService) {
-
     eds.registerMetadataMap(entityMetadata);
     entityDataService.registerService('PokemonList', pokemonListDataService);
     entityDataService.registerService('Pokemon', pokemonCardDataService);
