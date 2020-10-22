@@ -1,18 +1,18 @@
 <app-pokemon-card-header
-  [currentPokemon]="currentPokemon$ | async" 
-  [comparisonPokemon]="comparisonPokemon$ | async" 
-  [isComparing]="isComparing$ | async"
+  [currentPokemon]="currentPokemon" 
+  [comparisonPokemon]="comparisonPokemon" 
+  [isComparing]="isComparing"
   [dialogRef]="dialogRef"
 ></app-pokemon-card-header>
 
 <app-pokemon-card-data 
-  [currentPokemon]="currentPokemon$ | async" 
-  [comparisonPokemon]="comparisonPokemon$ | async" 
-  [isComparing]="isComparing$ | async">
+  [currentPokemon]="currentPokemonInformation$ | async" 
+  [comparisonPokemon]="comparisonPokemonInformation$ | async" 
+  [isComparing]="isComparing">
 </app-pokemon-card-data>
 
 <app-pokemon-card-chart
-  [currentPokemon]="currentPokemon$ | async" 
-  [comparisonPokemon]="comparisonPokemon$ | async" 
-  [isComparing]="isComparing$ | async">
+  [currentPokemon]="currentPokemonInformation$ | async" 
+  [comparisonPokemon]="comparisonPokemonInformation$ | async" 
+  [isComparing]="isComparing">
 </app-pokemon-card-chart>

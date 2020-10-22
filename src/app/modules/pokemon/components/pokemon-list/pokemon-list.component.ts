@@ -22,6 +22,7 @@ export class PokemonListComponent {
   @Input() pokemonList: PokemonListItem[];
   @Input() favoritePokemonList: PokemonListItem[];
   @Input() currentPokemon: PokemonListItem;
+  @Input() comparisonPokemon: PokemonListItem;
   @Input() isComparing: boolean;
   @Input() searchInput: string;
   maxFavoriteMessage = 'You can only have 5 favorite pokemon!';
@@ -49,12 +50,19 @@ export class PokemonListComponent {
     });
 
     if (this.isComparing) {
+      this.comparisonPokemon = pokemon;
       this.store.dispatch(updateComparisonPokemon({ pokemon }));
     } else {
+      this.currentPokemon = pokemon;
       this.store.dispatch(updateCurrentPokemon({ pokemon }));
     }
 
     const dialogConfig = defaultDialogConfig();
+    dialogConfig.data = {
+      isComparing: this.isComparing,
+      currentPokemon: this.currentPokemon,
+      comparisonPokemon: this.comparisonPokemon
+    };
     this.dialog.open(PokemonCardComponent, dialogConfig);
   }
 
@@ -84,5 +92,4 @@ export class PokemonListComponent {
   getFavoriteListIndex(pokemonName: string): number {
     return this.favoritePokemonList.findIndex((pokemon) => pokemon.name === pokemonName);
   }
-
 }

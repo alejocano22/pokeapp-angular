@@ -1,11 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { PokemonState } from '../../reducers';
 import { compare } from '../../actions/pokemon.actions';
-import { getComparisonPokemon, getCurrentPokemon, getIsComparing } from '../../selectors/pokemon.selectors';
 import { PokemonListItem } from '../../models/pokemon-list-item';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PokemonCardEntityService } from '../../services/pokemon-card-entity.service';
+import { map } from 'rxjs/operators';
+import { Pokemon } from '../../models/pokemon';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -14,27 +16,32 @@ import { MatDialogRef } from '@angular/material/dialog';
   encapsulation: ViewEncapsulation.None
 })
 export class PokemonCardComponent implements OnInit, OnDestroy {
-  currentPokemon$: Observable<PokemonListItem>;
-  comparisonPokemon$: Observable<PokemonListItem>;
-  isComparing$: Observable<boolean>;
-  compareFlag: boolean;
   isComparing: boolean;
+  currentPokemon: PokemonListItem;
+  comparisonPokemon: PokemonListItem;
+  currentPokemonInformation$: Observable<Pokemon>;
+  comparisonPokemonInformation$: Observable<Pokemon>;
 
   constructor(public dialogRef: MatDialogRef<PokemonCardComponent>,
-              private store: Store<PokemonState>) { }
+              @Inject(MAT_DIALOG_DATA) data: any,
+              private pokemonCardService: PokemonCardEntityService,
+              private store: Store<PokemonState>) {
+    this.isComparing = data.isComparing;
+    this.currentPokemon = data.currentPokemon;
+    this.comparisonPokemon = data.comparisonPokemon;
+  }
 
   ngOnInit(): void {
-    this.compareFlag = true;
-    this.isComparing$ = this.store.pipe(select(getIsComparing));
-    this.isComparing$.subscribe(isComparing => {
-      if (this.compareFlag){
-        this.isComparing = isComparing;
-        this.compareFlag = false;
-      }
-    });
-
-    this.currentPokemon$ = this.store.pipe(select(getCurrentPokemon));
-    this.comparisonPokemon$ = this.store.pipe(select(getComparisonPokemon));
+    this.currentPokemonInformation$ = this.pokemonCardService.entities$
+      .pipe(
+        map((pokemonList) => pokemonList.find((pokemon) => pokemon.name === this.currentPokemon.name))
+      );
+    if (this.isComparing) {
+      this.comparisonPokemonInformation$ = this.pokemonCardService.entities$
+        .pipe(
+          map((pokemonList) => pokemonList.find((pokemon) => pokemon.name === this.comparisonPokemon.name))
+      );
+    }
   }
 
   ngOnDestroy(): void {
