@@ -24,6 +24,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SearchComponent } from './components/search/search.component';
 import { PokemonFilterPipe } from './pipes/pokemon-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { PokemonFavoriteComponent } from './components/pokemon-favorite/pokemon-favorite.component';
 
 export const pokemonListRoutes: Routes = [
   {
@@ -51,7 +52,8 @@ const entityMetadata: EntityMetadataMap = {
     PokemonCardHeaderComponent,
     PokemonCardChartComponent,
     SearchComponent,
-    PokemonFilterPipe],
+    PokemonFilterPipe,
+    PokemonFavoriteComponent],
   imports: [
     CommonModule,
     MatCardModule,

@@ -19,6 +19,11 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent {
+
+  constructor(private courseService: PokemonListEntityService,
+              private pokemonCardService: PokemonCardEntityService,
+              private store: Store<PokemonState>,
+              private dialog: MatDialog) { }
   @Input() pokemonList: PokemonListItem[];
   @Input() favoritePokemonList: PokemonListItem[];
   @Input() currentPokemon: PokemonListItem;
@@ -28,12 +33,7 @@ export class PokemonListComponent {
   maxFavoriteMessage = 'You can only have 5 favorite pokemon!';
   comparisonMessage = 'Comparing pokemon...';
   nextOffset = 20;
-  maxFavorite: boolean;
-
-  constructor(private courseService: PokemonListEntityService,
-              private pokemonCardService: PokemonCardEntityService,
-              private store: Store<PokemonState>,
-              private dialog: MatDialog) { }
+  isFavoriteListFull = false;
 
   loadMorePokemon(): void {
     this.courseService.getWithQuery({
@@ -75,21 +75,18 @@ export class PokemonListComponent {
     this.loadMorePokemon();
   }
 
-  handleFavorite(event: any, pokemon: PokemonListItem): void{
-    this.maxFavorite = false;
-    if (this.getFavoriteListIndex(pokemon.name) === -1){
-      if (this.favoritePokemonList.length > 4){
-        this.maxFavorite = true;
-      } else {
-        this.store.dispatch(addFavoritePokemon({ pokemon }));
-      }
-    } else {
-      this.store.dispatch(deleteFavoritePokemon({ pokemon }));
-    }
-    event.stopPropagation();
-  }
-
   getFavoriteListIndex(pokemonName: string): number {
     return this.favoritePokemonList.findIndex((pokemon) => pokemon.name === pokemonName);
   }
+
+  favorite(pokemon: PokemonListItem): boolean{
+    return this.getFavoriteListIndex(pokemon.name) !== -1;
+  }
+
+  handleIsFavoriteFull(isFavoriteListFull: boolean): void{
+    this.isFavoriteListFull = isFavoriteListFull;
+  }
+
 }
+
+

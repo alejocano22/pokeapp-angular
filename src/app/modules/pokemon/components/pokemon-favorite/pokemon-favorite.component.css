@@ -1,0 +1,16 @@
+.icon {
+  font-size: 1rem;
+  color: var(--pokemon-white);
+}
+
+.icon:hover {
+  color: var(--pokemon-dark-yellow);
+}
+
+.icon-selected {
+  color: var(--pokemon-yellow);
+}
+
+.big-size {
+  font-size: 3rem;
+}

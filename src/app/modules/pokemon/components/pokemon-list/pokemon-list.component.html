@@ -1,4 +1,4 @@
-<app-alert-message [message]="maxFavoriteMessage" *ngIf="maxFavorite"></app-alert-message>
+<app-alert-message [message]="maxFavoriteMessage" *ngIf="isFavoriteListFull"></app-alert-message>
 <app-info-message [mainMessage]="comparisonMessage" [message]="currentPokemon.name" *ngIf="isComparing"></app-info-message>
 <div 
   class="pokemon-list" 
@@ -11,7 +11,13 @@
     <img class="pokemon-image" src="{{ getImage(pokemon.name) }}" alt="{{ pokemon.name }}">
     <h2 class="pokemon-name">
       {{ pokemon.name.toUpperCase() }}
-      <mat-icon class="icon" [ngClass]="{'icon-selected' : getFavoriteListIndex(pokemon.name) !== -1}" (click)="handleFavorite($event, pokemon)">favorite</mat-icon>
+      <app-pokemon-favorite 
+        [pokemon]="pokemon" 
+        [favoritePokemonList]="favoritePokemonList"
+        [favorite]="favorite(pokemon)"
+        [favoritePokemonLength]="favoritePokemonList.length"
+        (isFavoriteListFull)="handleIsFavoriteFull($event)">
+      </app-pokemon-favorite>
     </h2>
   </div>
 </div>
