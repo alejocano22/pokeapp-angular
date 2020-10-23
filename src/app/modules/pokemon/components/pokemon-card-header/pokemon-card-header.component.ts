@@ -5,6 +5,7 @@ import { compare } from '../../actions/pokemon.actions';
 import { PokemonListItem } from '../../models/pokemon-list-item';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { MatDialogRef } from '@angular/material/dialog';
+import { favorite } from 'src/app/utils/pokemon/pokemon-favorite';
 
 @Component({
   selector: 'app-pokemon-card-header',
@@ -16,15 +17,21 @@ export class PokemonCardHeaderComponent {
   @Input() currentPokemon: PokemonListItem;
   @Input() comparisonPokemon: PokemonListItem;
   @Input() dialogRef: MatDialogRef<PokemonCardComponent>;
+  @Input() favoritePokemonList: PokemonListItem[];
 
   constructor(private store: Store<PokemonState>) { }
 
   onClose(): void {
+    console.log(this.favoritePokemonList);
     this.dialogRef.close();
   }
 
   onCompare(): void {
     this.store.dispatch(compare());
     this.dialogRef.close();
+  }
+
+  isFavorite(pokemon: PokemonListItem): boolean{
+    return favorite(this.favoritePokemonList, pokemon);
   }
 }

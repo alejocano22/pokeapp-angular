@@ -1,4 +1,5 @@
 .icon {
+  cursor: pointer;
   font-size: 1rem;
   color: var(--pokemon-white);
 }
@@ -12,5 +13,5 @@
 }
 
 .big-size {
-  font-size: 3rem;
+  font-size: 2rem;
 }

@@ -13,8 +13,7 @@
       {{ pokemon.name.toUpperCase() }}
       <app-pokemon-favorite 
         [pokemon]="pokemon" 
-        [favoritePokemonList]="favoritePokemonList"
-        [favorite]="favorite(pokemon)"
+        [favorite]="isFavorite(pokemon)"
         [favoritePokemonLength]="favoritePokemonList.length"
         (isFavoriteListFull)="handleIsFavoriteFull($event)">
       </app-pokemon-favorite>

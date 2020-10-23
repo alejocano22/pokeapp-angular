@@ -11,6 +11,7 @@ import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
 import { speciesApi } from 'src/app/utils/url/pokeapi';
 import { defaultDialogConfig } from 'src/app/utils/dialog/default-dialog-config';
 import { MatDialog } from '@angular/material/dialog';
+import { favorite } from 'src/app/utils/pokemon/pokemon-favorite';
 
 
 @Component({
@@ -61,7 +62,8 @@ export class PokemonListComponent {
     dialogConfig.data = {
       isComparing: this.isComparing,
       currentPokemon: this.currentPokemon,
-      comparisonPokemon: this.comparisonPokemon
+      comparisonPokemon: this.comparisonPokemon,
+      favoritePokemonList: this.favoritePokemonList
     };
     this.dialog.open(PokemonCardComponent, dialogConfig);
   }
@@ -75,18 +77,13 @@ export class PokemonListComponent {
     this.loadMorePokemon();
   }
 
-  getFavoriteListIndex(pokemonName: string): number {
-    return this.favoritePokemonList.findIndex((pokemon) => pokemon.name === pokemonName);
-  }
-
-  favorite(pokemon: PokemonListItem): boolean{
-    return this.getFavoriteListIndex(pokemon.name) !== -1;
+  isFavorite(pokemon: PokemonListItem): boolean{
+    return favorite(this.favoritePokemonList, pokemon);
   }
 
   handleIsFavoriteFull(isFavoriteListFull: boolean): void{
     this.isFavoriteListFull = isFavoriteListFull;
   }
-
 }
 
 

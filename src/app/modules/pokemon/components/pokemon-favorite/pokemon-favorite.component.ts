@@ -10,7 +10,6 @@ import { PokemonState } from '../../reducers';
   styleUrls: ['./pokemon-favorite.component.css']
 })
 export class PokemonFavoriteComponent {
-  @Input() favoritePokemonList: PokemonListItem[];
   @Input() pokemon: PokemonListItem;
   @Input() favorite: boolean;
   @Input() favoritePokemonLength: number;
@@ -24,9 +23,11 @@ export class PokemonFavoriteComponent {
     if (this.favorite) {
         this.store.dispatch(deleteFavoritePokemon({ pokemon: this.pokemon }));
         this.isFavoriteListFull.emit(false);
+        this.favorite = false;
     } else {
       if (this.favoritePokemonLength < this.maxFavoritePokemon) {
         this.store.dispatch(addFavoritePokemon({ pokemon: this.pokemon }));
+        this.favorite = true;
       } else {
         this.isFavoriteListFull.emit(true);
       }

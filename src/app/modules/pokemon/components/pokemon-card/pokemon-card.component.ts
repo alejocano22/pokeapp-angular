@@ -19,6 +19,7 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
   isComparing: boolean;
   currentPokemon: PokemonListItem;
   comparisonPokemon: PokemonListItem;
+  favoritePokemonList: PokemonListItem[];
   currentPokemonInformation$: Observable<Pokemon>;
   comparisonPokemonInformation$: Observable<Pokemon>;
 
@@ -29,6 +30,7 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
     this.isComparing = data.isComparing;
     this.currentPokemon = data.currentPokemon;
     this.comparisonPokemon = data.comparisonPokemon;
+    this.favoritePokemonList = data.favoritePokemonList;
   }
 
   ngOnInit(): void {
