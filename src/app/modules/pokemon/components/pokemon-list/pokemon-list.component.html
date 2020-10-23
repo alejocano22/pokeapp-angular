@@ -7,7 +7,7 @@
 <div 
   class="pokemon-list" 
   infiniteScroll
-  (scrolled)="onScroll()"> 
+  (scrolled)="loadMorePokemon()"> 
   <div 
     class="pokemon-item" 
     *ngFor="let pokemon of pokemonList | pokemonFilter: searchInput" 

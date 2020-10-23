@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DefaultDataService, HttpUrlGenerator } from '@ngrx/data';
 import { map } from 'rxjs/operators';
 import { PokemonListItem } from '../models/pokemon-list-item';
-import { pokemonApi } from 'src/app/utils/url/pokeapi';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class PokemonListDataService extends DefaultDataService<PokemonListItem>{
@@ -13,14 +13,14 @@ export class PokemonListDataService extends DefaultDataService<PokemonListItem>{
   }
 
   getAll(): Observable<PokemonListItem[]>{
-    return this.http.get(pokemonApi)
+    return this.http.get(environment.pokemonApi)
       .pipe(
         map(res => res['results'])
       );
   }
 
   getWithQuery(params): Observable<PokemonListItem[]>{
-    return this.http.get(`${pokemonApi}?offset=${params.offset}&limit=${params.limit}`)
+    return this.http.get(`${environment.pokemonApi}?offset=${params.offset}&limit=${params.limit}`)
       .pipe(
         map(res => res['results'])
       );

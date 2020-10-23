@@ -19,7 +19,7 @@ export class PokemonFavoriteComponent {
 
   constructor(private store: Store<PokemonState>) { }
 
-  handleFavorite(event: any): void {
+  handleFavorite(event: MouseEvent): void {
     if (this.favorite) {
         this.store.dispatch(deleteFavoritePokemon({ pokemon: this.pokemon }));
         this.isFavoriteListFull.emit(false);

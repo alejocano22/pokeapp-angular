@@ -7,11 +7,10 @@ import { PokemonCardEntityService } from '../../services/pokemon-card-entity.ser
 import { PokemonListItem } from '../../models/pokemon-list-item';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
-import { speciesApi } from 'src/app/utils/url/pokeapi';
+import { environment } from 'src/environments/environment';
 import { defaultDialogConfig } from 'src/app/utils/dialog/default-dialog-config';
 import { MatDialog } from '@angular/material/dialog';
 import { favorite } from 'src/app/utils/pokemon/pokemon-favorite';
-
 
 @Component({
   selector: 'app-pokemon-list',
@@ -46,7 +45,7 @@ export class PokemonListComponent {
   openPokemonCard(pokemon: PokemonListItem): void {
     this.pokemonCardService.getWithQuery({
       url: pokemon.url,
-      speciesUrl: speciesApi + pokemon.name
+      speciesUrl: environment.speciesApi + pokemon.name
     });
 
     if (this.isComparing) {
@@ -72,9 +71,6 @@ export class PokemonListComponent {
     return getPokemonImageUrl(id);
   }
 
-  onScroll(): void{
-    this.loadMorePokemon();
-  }
 
   isFavorite(pokemon: PokemonListItem): boolean{
     return favorite(this.favoritePokemonList, pokemon);

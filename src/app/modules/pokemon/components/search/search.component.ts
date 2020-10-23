@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PokemonState } from '../../reducers';
 import { updateSearchInput } from '../../actions/pokemon.actions';
@@ -8,11 +8,16 @@ import { updateSearchInput } from '../../actions/pokemon.actions';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnDestroy{
+
   constructor(private store: Store<PokemonState>) { }
 
-  onChange(event: any): void {
-    const search: string = event.target.value;
-    this.store.dispatch(updateSearchInput({search}));
+  updateSearch(search: string): void {
+    this.store.dispatch(updateSearchInput({ search }));
   }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(updateSearchInput({ search: '' }));
+  }
+
 }

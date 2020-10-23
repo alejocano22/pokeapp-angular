@@ -1,5 +1,5 @@
-import { pokemonImagesUrl } from '../url/images';
+import { environment } from 'src/environments/environment';
 
 export const getPokemonImageUrl = (id: number): string => {
-  return pokemonImagesUrl + id.toString() + '.png?raw=true';
+  return environment.pokemonImagesUrl + id.toString() + '.png?raw=true';
 };

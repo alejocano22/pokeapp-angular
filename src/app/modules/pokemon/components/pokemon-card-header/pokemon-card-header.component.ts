@@ -22,7 +22,6 @@ export class PokemonCardHeaderComponent {
   constructor(private store: Store<PokemonState>) { }
 
   onClose(): void {
-    console.log(this.favoritePokemonList);
     this.dialogRef.close();
   }
 
