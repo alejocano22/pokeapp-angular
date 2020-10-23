@@ -1,4 +1,3 @@
-import { addFavoritePokemon, deleteFavoritePokemon } from './../../actions/pokemon.actions';
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PokemonState } from '../../reducers';

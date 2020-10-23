@@ -1,5 +1,9 @@
 <app-alert-message [message]="maxFavoriteMessage" *ngIf="isFavoriteListFull"></app-alert-message>
-<app-info-message [mainMessage]="comparisonMessage" [message]="currentPokemon.name" *ngIf="isComparing"></app-info-message>
+<app-info-message 
+  [mainMessage]="comparisonMessage" 
+  [message]="currentPokemon.name" 
+  *ngIf="isComparing">
+</app-info-message>
 <div 
   class="pokemon-list" 
   infiniteScroll

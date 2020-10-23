@@ -10,7 +10,6 @@ export const updateCurrentPokemon = createAction(
   props<{ pokemon: PokemonListItem }>()
 );
 
-
 export const updateComparisonPokemon = createAction(
   '[Pokemon Card] Update Comparison Pokemon',
   props<{ pokemon: PokemonListItem }>()
