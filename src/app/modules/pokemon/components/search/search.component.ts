@@ -1,23 +1,16 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { PokemonState } from '../../reducers';
-import { updateSearchInput } from '../../actions/pokemon.actions';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnDestroy{
+export class SearchComponent {
+  @Output() inputChange = new EventEmitter<string>();
 
-  constructor(private store: Store<PokemonState>) { }
+  constructor() { }
 
-  updateSearch(search: string): void {
-    this.store.dispatch(updateSearchInput({ search }));
+  updateInput(input: string): void {
+    this.inputChange.emit(input);
   }
-
-  ngOnDestroy(): void {
-    this.store.dispatch(updateSearchInput({ search: '' }));
-  }
-
 }

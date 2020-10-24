@@ -38,7 +38,8 @@ export const pokemonListRoutes: Routes = [
 
 const entityMetadata: EntityMetadataMap = {
   PokemonList: {
-    selectId: (item: PokemonListItem) => item.name
+    selectId: (item: PokemonListItem) => item.name,
+    filterFn: (pokemonList: PokemonListItem[], search: string) => pokemonList.filter((pokemon) => pokemon.name.includes(search))
   },
   Pokemon: { }
 };

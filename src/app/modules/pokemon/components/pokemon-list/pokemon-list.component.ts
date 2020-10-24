@@ -19,7 +19,9 @@ import { favorite } from 'src/app/utils/pokemon/pokemon-favorite';
 })
 export class PokemonListComponent {
 
+
   constructor(private courseService: PokemonListEntityService,
+              private pokemonListService: PokemonListEntityService,
               private pokemonCardService: PokemonCardEntityService,
               private store: Store<PokemonState>,
               private dialog: MatDialog) { }
@@ -66,9 +68,10 @@ export class PokemonListComponent {
     this.dialog.open(PokemonCardComponent, dialogConfig);
   }
 
-  getImage(name: string): string{
-    const id = this.pokemonList.findIndex((pokemon) => pokemon.name === name) + 1;
-    return getPokemonImageUrl(id);
+  getImage(url: string): string {
+    return getPokemonImageUrl(parseInt(url.split('/')[6], 10));
+    // const id = this.pokemonList.findIndex((pokemon) => pokemon.name === name) + 1;
+    // return getPokemonImageUrl(id);
   }
 
 

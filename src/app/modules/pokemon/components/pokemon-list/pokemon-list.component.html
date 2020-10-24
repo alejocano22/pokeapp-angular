@@ -8,11 +8,12 @@
   class="pokemon-list" 
   infiniteScroll
   (scrolled)="loadMorePokemon()"> 
+  <!-- | pokemonFilter: searchInput"  -->
   <div 
     class="pokemon-item" 
-    *ngFor="let pokemon of pokemonList | pokemonFilter: searchInput" 
+    *ngFor="let pokemon of pokemonList"
     (click)="openPokemonCard(pokemon)">
-    <img class="pokemon-image" src="{{ getImage(pokemon.name) }}" alt="{{ pokemon.name }}">
+    <img class="pokemon-image" src="{{ getImage(pokemon.url) }}" alt="{{ pokemon.name }}">
     <h2 class="pokemon-name">
       {{ pokemon.name.toUpperCase() }}
       <app-pokemon-favorite 
