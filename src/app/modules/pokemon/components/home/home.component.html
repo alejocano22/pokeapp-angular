@@ -1,10 +1,10 @@
-<app-search (inputChange)="updateFilter($event)"></app-search>
-
+<div class="search">
+  <app-search (inputChange)="updateFilter($event)"></app-search>
+</div>
 <div class="pokemon-list-home">
   <div class="list-title">
     <app-title title="List of Pokémon"></app-title>
   </div>
-  <!-- [pokemonList]="pokemonList$ | async" -->
   <app-pokemon-list 
     class="pokemon-list" 
     [pokemonList]="pokemonList$ | async"

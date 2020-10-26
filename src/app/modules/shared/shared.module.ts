@@ -5,13 +5,15 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
 import { InfoMessageComponent } from './components/info-message/info-message.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TitleComponent } from './components/title/title.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AlertMessageComponent,
     InfoMessageComponent,
     FooterComponent,
-    TitleComponent
+    TitleComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { TitleComponent } from './components/title/title.component';
     AlertMessageComponent,
     InfoMessageComponent,
     FooterComponent,
-    TitleComponent
+    TitleComponent,
+    SearchComponent
   ]
 })
 export class SharedModule { }
