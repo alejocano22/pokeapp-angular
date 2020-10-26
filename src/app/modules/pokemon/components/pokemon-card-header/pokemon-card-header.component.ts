@@ -5,7 +5,7 @@ import { compare } from '../../actions/pokemon.actions';
 import { PokemonListItem } from '../../models/pokemon-list-item';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { MatDialogRef } from '@angular/material/dialog';
-import { favorite } from 'src/app/utils/pokemon/pokemon-favorite';
+import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
 
 @Component({
   selector: 'app-pokemon-card-header',
@@ -31,6 +31,6 @@ export class PokemonCardHeaderComponent {
   }
 
   isFavorite(pokemon: PokemonListItem): boolean{
-    return favorite(this.favoritePokemonList, pokemon);
+    return PokemonInformation.isFavorite(this.favoritePokemonList, pokemon);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
-import { getGender } from 'src/app/utils/pokemon/pokemon-gender';
-import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
+import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
+import { PokemonResources } from 'src/app/utils/pokemon/pokemon-resources';
 
 @Component({
   selector: 'app-pokemon-card-data',
@@ -17,7 +17,7 @@ export class PokemonCardDataComponent {
   constructor() { }
 
   getImage(id: number): string{
-    return getPokemonImageUrl(id);
+    return PokemonResources.getPokemonImageUrl(id);
   }
 
   getItem(id: number): string{
@@ -26,6 +26,6 @@ export class PokemonCardDataComponent {
   }
 
   getGenderName(rate: number): string{
-    return getGender(rate);
+    return PokemonInformation.getGender(rate);
   }
 }

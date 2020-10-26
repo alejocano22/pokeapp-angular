@@ -1,4 +1,6 @@
-export const barChartOptions = {
+import { ChartDataSets, ChartOptions } from 'chart.js';
+
+export const barChartOptions: ChartOptions = {
   responsive: true,
     legend: {
       display: false,
@@ -23,7 +25,7 @@ export const barChartOptions = {
     }
 };
 
-export const barChartPrimaryStyle = {
+export const barChartPrimaryStyle: ChartDataSets = {
   backgroundColor: '#cc0000',
   borderColor: '#cc0000',
   hoverBackgroundColor: '#ff0000',
@@ -31,7 +33,7 @@ export const barChartPrimaryStyle = {
   borderWidth: 5
 };
 
-export const barChartSecondaryStyle = {
+export const barChartSecondaryStyle: ChartDataSets = {
   backgroundColor: '#b3a125',
   borderColor: '#b3a125',
   hoverBackgroundColor: '#ffde00',

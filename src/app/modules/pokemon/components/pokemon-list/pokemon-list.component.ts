@@ -6,11 +6,11 @@ import { PokemonListEntityService } from '../../services/pokemon-list-entity.ser
 import { PokemonCardEntityService } from '../../services/pokemon-card-entity.service';
 import { PokemonListItem } from '../../models/pokemon-list-item';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
-import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
+import { PokemonResources } from 'src/app/utils/pokemon/pokemon-resources';
 import { environment } from 'src/environments/environment';
-import { defaultDialogConfig } from 'src/app/utils/dialog/default-dialog-config';
+import { PokemonDialog } from 'src/app/utils/dialog/pokemon-dialog';
 import { MatDialog } from '@angular/material/dialog';
-import { favorite } from 'src/app/utils/pokemon/pokemon-favorite';
+import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -18,13 +18,6 @@ import { favorite } from 'src/app/utils/pokemon/pokemon-favorite';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent {
-
-
-  constructor(private courseService: PokemonListEntityService,
-              private pokemonListService: PokemonListEntityService,
-              private pokemonCardService: PokemonCardEntityService,
-              private store: Store<PokemonState>,
-              private dialog: MatDialog) { }
   @Input() pokemonList: PokemonListItem[];
   @Input() favoritePokemonList: PokemonListItem[];
   @Input() currentPokemon: PokemonListItem;
@@ -35,6 +28,11 @@ export class PokemonListComponent {
   comparisonMessage = 'Comparing pokemon...';
   nextOffset = 20;
   isFavoriteListFull = false;
+
+  constructor(private courseService: PokemonListEntityService,
+              private pokemonCardService: PokemonCardEntityService,
+              private store: Store<PokemonState>,
+              private dialog: MatDialog) { }
 
   loadMorePokemon(): void {
     this.courseService.getWithQuery({
@@ -58,7 +56,7 @@ export class PokemonListComponent {
       this.store.dispatch(updateCurrentPokemon({ pokemon }));
     }
 
-    const dialogConfig = defaultDialogConfig();
+    const dialogConfig = PokemonDialog.defaultDialogConfig();
     dialogConfig.data = {
       isComparing: this.isComparing,
       currentPokemon: this.currentPokemon,
@@ -69,14 +67,12 @@ export class PokemonListComponent {
   }
 
   getImage(url: string): string {
-    return getPokemonImageUrl(parseInt(url.split('/')[6], 10));
-    // const id = this.pokemonList.findIndex((pokemon) => pokemon.name === name) + 1;
-    // return getPokemonImageUrl(id);
+    return PokemonResources.getPokemonImageUrl(parseInt(url.split('/')[6], 10));
   }
 
 
   isFavorite(pokemon: PokemonListItem): boolean{
-    return favorite(this.favoritePokemonList, pokemon);
+    return PokemonInformation.isFavorite(this.favoritePokemonList, pokemon);
   }
 
   handleIsFavoriteFull(isFavoriteListFull: boolean): void{

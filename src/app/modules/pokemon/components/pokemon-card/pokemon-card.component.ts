@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PokemonCardEntityService } from '../../services/pokemon-card-entity.service';
 import { map } from 'rxjs/operators';
 import { Pokemon } from '../../models/pokemon';
-import { DialogData } from '../../models/dialog-data';
+import { PokemonDialogData } from '../../models/pokemon-dialog-data';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -25,7 +25,7 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
   comparisonPokemonInformation$: Observable<Pokemon>;
 
   constructor(public dialogRef: MatDialogRef<PokemonCardComponent>,
-              @Inject(MAT_DIALOG_DATA) data: DialogData,
+              @Inject(MAT_DIALOG_DATA) data: PokemonDialogData,
               private pokemonCardService: PokemonCardEntityService,
               private store: Store<PokemonState>) {
     this.isComparing = data.isComparing;

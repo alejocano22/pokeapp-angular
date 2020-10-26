@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PokemonListItem } from 'src/app/modules/pokemon/models/pokemon-list-item';
-import { getPokemonImageUrl } from 'src/app/utils/images/pokemon-images';
+import { PokemonResources } from 'src/app/utils/pokemon/pokemon-resources';
 
 @Component({
   selector: 'app-favorite-pokemon-banner',
@@ -18,6 +18,6 @@ export class FavoritePokemonBannerComponent implements OnInit {
   }
 
   getImage(url: string): string {
-    return getPokemonImageUrl(parseInt(url.split('/')[6], 10));
+    return PokemonResources.getPokemonImageUrl(parseInt(url.split('/')[6], 10));
   }
 }
