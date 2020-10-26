@@ -18,14 +18,23 @@ import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent {
-  @Input() pokemonList: PokemonListItem[];
+  @Input()
+  get pokemonList(): PokemonListItem[] {
+    return this.pokemonListItems;
+  }
+
+  set pokemonList(pokemonList: PokemonListItem[]){
+    this.pokemonImages = pokemonList.map((pokemon) => this.getImage(pokemon.url));
+    this.pokemonListItems = pokemonList;
+  }
+
   @Input() favoritePokemonList: PokemonListItem[];
   @Input() currentPokemon: PokemonListItem;
   @Input() comparisonPokemon: PokemonListItem;
   @Input() isComparing: boolean;
   @Input() searchInput: string;
-  maxFavoriteMessage = 'You can only have 5 favorite pokemon!';
-  comparisonMessage = 'Comparing pokemon...';
+  private pokemonListItems: PokemonListItem[];
+  pokemonImages: string[] = [];
   nextOffset = 20;
   isFavoriteListFull = false;
 
@@ -69,7 +78,6 @@ export class PokemonListComponent {
   getImage(url: string): string {
     return PokemonResources.getPokemonImageUrl(parseInt(url.split('/')[6], 10));
   }
-
 
   isFavorite(pokemon: PokemonListItem): boolean{
     return PokemonInformation.isFavorite(this.favoritePokemonList, pokemon);

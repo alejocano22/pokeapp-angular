@@ -21,7 +21,6 @@ import { PokemonCardHeaderComponent } from './components/pokemon-card-header/pok
 import { ChartsModule } from 'ng2-charts';
 import { PokemonCardChartComponent } from './components/pokemon-card-chart/pokemon-card-chart.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { PokemonFilterPipe } from './pipes/pokemon-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { PokemonFavoriteComponent } from './components/pokemon-favorite/pokemon-favorite.component';
 
@@ -51,7 +50,6 @@ const entityMetadata: EntityMetadataMap = {
     PokemonCardDataComponent,
     PokemonCardHeaderComponent,
     PokemonCardChartComponent,
-    PokemonFilterPipe,
     PokemonFavoriteComponent],
   imports: [
     CommonModule,

@@ -3,12 +3,12 @@
     <div class="pokemon-comparison-images">
       <img
         class="card-comparison-image"
-        src="{{ getImage(currentPokemon.id) }}"
-        alt="{{ currentPokemon.name }}">
+        [src]="pokemonImages[0]"
+        [alt]="currentPokemon.name">
       <img
         class="card-comparison-image"
-        src="{{ getImage(comparisonPokemon.id) }}"
-        alt="{{ comparisonPokemon.name }}">
+        [src]="pokemonImages[1]"
+        [alt]="comparisonPokemon.name">
     </div>
     <div class="pokemon-comparison-details">
       <div class="pokemon-comparison-detail-item">
@@ -38,8 +38,8 @@
   <div class="pokemon-information" *ngIf="currentPokemon" >
     <img
       class="card-image"
-      src="{{ getImage(currentPokemon.id) }}"
-      alt="{{ currentPokemon.name }}">
+      [src]="pokemonImages[0]"
+      [alt]="currentPokemon.name">
     <div>
       <p class="pokemon-description">{{ currentPokemon.description }}</p>
       <div class="pokemon-details"> 
