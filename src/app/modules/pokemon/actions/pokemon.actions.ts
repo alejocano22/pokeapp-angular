@@ -21,11 +21,11 @@ export const updateSearchInput = createAction(
 );
 
 export const addFavoritePokemon = createAction(
-  '[List Of Pokemon] Add Favorite Pokemon',
+  '[Favorite Pokemon] Add Favorite Pokemon',
   props<{ pokemon: PokemonListItem }>()
 );
 
 export const deleteFavoritePokemon = createAction(
-  '[List Of Pokemon] Delete Favorite Pokemon',
+  '[Favorite Pokemon] Delete Favorite Pokemon',
   props<{ pokemon: PokemonListItem }>()
 );

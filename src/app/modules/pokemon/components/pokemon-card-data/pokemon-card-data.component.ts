@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
 import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
 import { PokemonResources } from 'src/app/utils/pokemon/pokemon-resources';
@@ -8,17 +8,18 @@ import { PokemonResources } from 'src/app/utils/pokemon/pokemon-resources';
   templateUrl: './pokemon-card-data.component.html',
   styleUrls: ['./pokemon-card-data.component.css', 'pokemon-comparison-card-data.component.css']
 })
-export class PokemonCardDataComponent {
+export class PokemonCardDataComponent implements OnInit {
   @Input()
   get currentPokemon(): Pokemon {
     return this.currentPokemonInformation;
   }
 
-  set currentPokemon(currentPokemon: Pokemon){
+  set currentPokemon(currentPokemon: Pokemon) {
+    this.currentPokemonInformation = currentPokemon;
     if (currentPokemon) {
       this.pokemonImages[0] = this.getImage(currentPokemon.id) ;
+      this.pokemonGenderName[0] = this.getGenderName(this.currentPokemon.genderRate);
     }
-    this.currentPokemonInformation = currentPokemon;
   }
 
   @Input()
@@ -26,26 +27,33 @@ export class PokemonCardDataComponent {
     return this.comparisonPokemonInformation;
   }
 
-  set comparisonPokemon(comparisonPokemon: Pokemon){
-    if (comparisonPokemon) {
-      this.pokemonImages[1] = this.getImage(comparisonPokemon.id) ;
-    }
+  set comparisonPokemon(comparisonPokemon: Pokemon) {
     this.comparisonPokemonInformation = comparisonPokemon;
+    if (comparisonPokemon) {
+      this.pokemonImages[1] = this.getImage(comparisonPokemon.id);
+      this.pokemonGenderName[1] = this.getGenderName(this.comparisonPokemon.genderRate);
+    }
   }
 
   @Input() isComparing: boolean;
   private currentPokemonInformation: Pokemon;
   private comparisonPokemonInformation: Pokemon;
   pokemonImages: string[] = [];
-  pokemonDetailTitle: string[] = ['Height', 'Weight'];
+  pokemonDetailItem: string[] = ['height', 'weight'];
+  pokemonDetailTitle: string[] = [];
+  pokemonGenderName: string[] = [];
 
   constructor() { }
 
-  getImage(id: number): string{
+  ngOnInit(): void {
+    this.pokemonDetailTitle = this.pokemonDetailItem.map((title) => title.charAt(0).toUpperCase() + title.slice(1));
+  }
+
+  getImage(id: number): string {
     return PokemonResources.getPokemonImageUrl(id);
   }
 
-  getGenderName(rate: number): string{
+  getGenderName(rate: number): string {
     return PokemonInformation.getGender(rate);
   }
 }

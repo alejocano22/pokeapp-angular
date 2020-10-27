@@ -14,7 +14,7 @@
     (click)="openPokemonCard(pokemon)">
     <img class="pokemon-image" [src]="pokemonImages[i]" [alt]="pokemon.name">
     <h2 class="pokemon-name">
-      {{ pokemon.name.toUpperCase() }}
+      {{ pokemonNames[i] }}
       <app-pokemon-favorite
         [pokemon]="pokemon" 
         [favorite]="favorites[i]"

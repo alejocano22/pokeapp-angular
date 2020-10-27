@@ -17,7 +17,7 @@ export class PokemonCardChartComponent {
     return this.currentPokemonInformation;
   }
 
-  set currentPokemon(currentPokemon: Pokemon){
+  set currentPokemon(currentPokemon: Pokemon) {
     if (currentPokemon) {
       this.barChartLabels = currentPokemon.stats.map((stat) => stat.stat.name);
       const currentPokemonBaseStat = currentPokemon.stats.map((stat) => stat.base_stat);
@@ -34,7 +34,7 @@ export class PokemonCardChartComponent {
     return this.comparisonPokemonInformation;
   }
 
-  set comparisonPokemon(comparisonPokemon: Pokemon){
+  set comparisonPokemon(comparisonPokemon: Pokemon) {
     if (comparisonPokemon && this.isComparing) {
       const comparisonPokemonBaseStat = comparisonPokemon.stats.map((stat) => stat.base_stat);
       this.barChartData.push({
@@ -53,5 +53,4 @@ export class PokemonCardChartComponent {
   barChartLabels: Label[];
 
   constructor() { }
-
 }

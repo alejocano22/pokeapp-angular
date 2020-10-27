@@ -6,12 +6,12 @@ import { map } from 'rxjs/operators';
 import { Pokemon } from '../models/pokemon';
 
 @Injectable()
-export class PokemonCardDataService extends DefaultDataService<Pokemon>{
-  constructor(http: HttpClient, httpUrlGenerator: HttpUrlGenerator){
+export class PokemonCardDataService extends DefaultDataService<Pokemon> {
+  constructor(http: HttpClient, httpUrlGenerator: HttpUrlGenerator) {
     super('Pokemon', http, httpUrlGenerator);
   }
 
-  getWithQuery(params: QueryParams): Observable<Pokemon[]>{
+  getWithQuery(params: QueryParams): Observable<Pokemon[]> {
     const pokemonArray: Pokemon[] = [];
     return combineLatest([this.http.get(params.url.toString()), this.http.get(params.speciesUrl.toString())])
       .pipe(

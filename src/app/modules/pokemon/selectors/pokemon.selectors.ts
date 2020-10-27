@@ -27,4 +27,3 @@ export const getFavoritePokemonList = createSelector(
   selectPokemonState,
   (state) => state.favoritePokemonList
 );
-

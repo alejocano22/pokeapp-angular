@@ -30,6 +30,7 @@ export class PokemonListComponent implements OnInit {
   set pokemonList(pokemonList: PokemonListItem[]) {
     this.pokemonListItems = pokemonList;
     this.pokemonImages = pokemonList.map((pokemon) => this.getImage(pokemon.url));
+    this.pokemonNames = pokemonList.map((pokemon) => pokemon.name.toUpperCase());
   }
 
   @Input()
@@ -37,7 +38,7 @@ export class PokemonListComponent implements OnInit {
     return this.favoritePokemonListItems;
   }
 
-  set favoritePokemonList(favoritePokemonList: PokemonListItem[]){
+  set favoritePokemonList(favoritePokemonList: PokemonListItem[]) {
     this.favoritePokemonListItems = favoritePokemonList;
     if (this.pokemonListItems) {
       this.favorites = this.pokemonListItems.map((pokemon) => this.isFavorite(pokemon));
@@ -46,6 +47,7 @@ export class PokemonListComponent implements OnInit {
 
   private pokemonListItems: PokemonListItem[];
   private favoritePokemonListItems: PokemonListItem[];
+  pokemonNames: string[] = [];
   pokemonImages: string[] = [];
   favorites: boolean[] = [];
   nextOffset = 20;
@@ -65,7 +67,7 @@ export class PokemonListComponent implements OnInit {
       offset: this.nextOffset.toString(),
       limit: '20',
     });
-    this.nextOffset  += 20;
+    this.nextOffset += 20;
   }
 
   openPokemonCard(pokemon: PokemonListItem): void {
@@ -96,11 +98,11 @@ export class PokemonListComponent implements OnInit {
     return PokemonResources.getPokemonImageUrl(parseInt(url.split('/')[6], 10));
   }
 
-  isFavorite(pokemon: PokemonListItem): boolean{
+  isFavorite(pokemon: PokemonListItem): boolean {
     return PokemonInformation.isFavorite(this.favoritePokemonList, pokemon);
   }
 
-  handleIsFavoriteFull(isFavoriteListFull: boolean): void{
+  handleIsFavoriteFull(isFavoriteListFull: boolean): void {
     this.isFavoriteListFull = isFavoriteListFull;
   }
 }

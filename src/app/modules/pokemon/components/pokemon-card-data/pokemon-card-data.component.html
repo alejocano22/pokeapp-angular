@@ -12,14 +12,14 @@
     </div>
     <div class="pokemon-comparison-details">
       <div class="pokemon-comparison-detail-item">
-        <h4 class="pokemon-comparison-detail-description">{{ getGenderName(currentPokemon.genderRate) }}</h4>
+        <h4 class="pokemon-comparison-detail-description">{{ pokemonGenderName[0] }}</h4>
         <h3 class="pokemon-comparison-detail-title">Gender</h3>
-        <h4 class="pokemon-comparison-detail-description">{{ getGenderName(comparisonPokemon.genderRate) }}</h4>
+        <h4 class="pokemon-comparison-detail-description">{{ pokemonGenderName[1] }}</h4>
       </div>
       <div class="pokemon-comparison-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
-        <h4 class="pokemon-comparison-detail-description">{{ currentPokemon[detail.toLowerCase()] }}</h4>
+        <h4 class="pokemon-comparison-detail-description">{{ currentPokemon[pokemonDetailItem[i]] }}</h4>
         <h3 class="pokemon-comparison-detail-title">{{ detail }}</h3>
-        <h4 class="pokemon-comparison-detail-description">{{ comparisonPokemon[detail.toLowerCase()] }}</h4>
+        <h4 class="pokemon-comparison-detail-description">{{ comparisonPokemon[pokemonDetailItem[i]] }}</h4>
       </div>
       <div class="pokemon-comparison-detail-item">
         <ul class="pokemon-comparison-detail-list" > 
@@ -45,11 +45,11 @@
       <div class="pokemon-details"> 
         <div class="pokemon-detail-item">
           <h3 class="pokemon-detail-title">Gender</h3>
-          <h4 clas="pokemon-detail-description">{{ getGenderName(currentPokemon.genderRate) }}</h4>
+          <h4 clas="pokemon-detail-description">{{ pokemonGenderName[0] }}</h4>
         </div>
         <div class="pokemon-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
           <h3 class="pokemon-detail-title">{{ detail }}</h3>
-          <h4 clas="pokemon-detail-description">{{ currentPokemon[detail.toLowerCase()] }}</h4>
+          <h4 clas="pokemon-detail-description">{{ currentPokemon[pokemonDetailItem[i]] }}</h4>
         </div>
         <div class="pokemon-detail-item">
           <h3 class="pokemon-detail-title">Types</h3>

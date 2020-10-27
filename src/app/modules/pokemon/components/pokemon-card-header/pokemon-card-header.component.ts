@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PokemonState } from '../../reducers';
 import { compare } from '../../actions/pokemon.actions';
@@ -12,7 +12,7 @@ import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
   templateUrl: './pokemon-card-header.component.html',
   styleUrls: ['./pokemon-card-header.component.css']
 })
-export class PokemonCardHeaderComponent {
+export class PokemonCardHeaderComponent implements OnInit {
   @Input()
   get favoritePokemonList(): PokemonListItem[] {
     return this.favoritePokemonListItems;
@@ -23,14 +23,22 @@ export class PokemonCardHeaderComponent {
     this.favorite = this.isFavorite(this.currentPokemon);
   }
 
-  @Input() isComparing: boolean;
   @Input() currentPokemon: PokemonListItem;
   @Input() comparisonPokemon: PokemonListItem;
+  @Input() isComparing: boolean;
   @Input() dialogRef: MatDialogRef<PokemonCardComponent>;
   private favoritePokemonListItems: PokemonListItem[];
+  pokemonNames: string[] = [];
   favorite: boolean;
 
   constructor(private store: Store<PokemonState>) { }
+
+  ngOnInit(): void {
+    this.pokemonNames[0] = this.currentPokemon.name.toUpperCase();
+    if (this.comparisonPokemon) {
+      this.pokemonNames[1] = this.comparisonPokemon.name.toUpperCase();
+    }
+  }
 
   onClose(): void {
     this.dialogRef.close();

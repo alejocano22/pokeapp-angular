@@ -1,9 +1,9 @@
 import { PokemonListItem } from 'src/app/modules/pokemon/models/pokemon-list-item';
 
 export class PokemonInformation {
-  constructor(){ }
+  constructor() { }
 
-  static getFavoriteListIndex(favoritePokemonList: PokemonListItem[], pokemonName: string): number  {
+  static getFavoriteListIndex(favoritePokemonList: PokemonListItem[], pokemonName: string): number {
     return favoritePokemonList.findIndex((pokemon) => pokemon.name === pokemonName);
   }
 
@@ -13,10 +13,10 @@ export class PokemonInformation {
 
   static getGender(rate: number): string {
     let gender = 'Genderless';
-    if (rate >= 4 ){
-        gender = 'Female';
-    } else if (rate >= 0){
-        gender = 'Male';
+    if (rate >= 4 ) {
+      gender = 'Female';
+    } else if (rate >= 0) {
+      gender = 'Male';
     }
     return gender;
   }

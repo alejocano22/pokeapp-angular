@@ -2,9 +2,9 @@
   <button mat-icon-button class="close-button" (click)="onClose()">
     <mat-icon>close</mat-icon>
   </button>
-  <h2 class="pokemon-name">{{ currentPokemon.name.toUpperCase() }}
+  <h2 class="pokemon-name">{{ pokemonNames[0] }}
     <ng-container *ngIf="isComparing  && comparisonPokemon">
-      vs {{comparisonPokemon.name.toUpperCase()}} 
+      vs {{ pokemonNames[1] }} 
     </ng-container>
   </h2>
   <app-pokemon-favorite 
