@@ -15,9 +15,9 @@
     <img class="pokemon-image" [src]="pokemonImages[i]" [alt]="pokemon.name">
     <h2 class="pokemon-name">
       {{ pokemon.name.toUpperCase() }}
-      <app-pokemon-favorite 
+      <app-pokemon-favorite
         [pokemon]="pokemon" 
-        [favorite]="isFavorite(pokemon)"
+        [favorite]="favorites[i]"
         [favoritePokemonLength]="favoritePokemonList.length"
         (isFavoriteListFull)="handleIsFavoriteFull($event)">
       </app-pokemon-favorite>

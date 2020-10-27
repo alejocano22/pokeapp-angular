@@ -45,11 +45,6 @@ export class PokemonCardDataComponent {
     return PokemonResources.getPokemonImageUrl(id);
   }
 
-  getItem(id: number): string{
-    const items: string[] = ['height', 'weight'];
-    return items[id];
-  }
-
   getGenderName(rate: number): string{
     return PokemonInformation.getGender(rate);
   }

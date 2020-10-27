@@ -17,9 +17,9 @@
         <h4 class="pokemon-comparison-detail-description">{{ getGenderName(comparisonPokemon.genderRate) }}</h4>
       </div>
       <div class="pokemon-comparison-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
-        <h4 class="pokemon-comparison-detail-description">{{ currentPokemon[getItem(i)] }}</h4>
+        <h4 class="pokemon-comparison-detail-description">{{ currentPokemon[detail.toLowerCase()] }}</h4>
         <h3 class="pokemon-comparison-detail-title">{{ detail }}</h3>
-        <h4 class="pokemon-comparison-detail-description">{{ comparisonPokemon[getItem(i)] }}</h4>
+        <h4 class="pokemon-comparison-detail-description">{{ comparisonPokemon[detail.toLowerCase()] }}</h4>
       </div>
       <div class="pokemon-comparison-detail-item">
         <ul class="pokemon-comparison-detail-list" > 
@@ -49,7 +49,7 @@
         </div>
         <div class="pokemon-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
           <h3 class="pokemon-detail-title">{{ detail }}</h3>
-          <h4 clas="pokemon-detail-description">{{ currentPokemon[getItem(i)] }}</h4>
+          <h4 clas="pokemon-detail-description">{{ currentPokemon[detail.toLowerCase()] }}</h4>
         </div>
         <div class="pokemon-detail-item">
           <h3 class="pokemon-detail-title">Types</h3>

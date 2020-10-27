@@ -1,8 +1,8 @@
 export interface Pokemon {
   id: number;
   name: string;
-  height: string;
-  weight: string;
+  height: number;
+  weight: number;
   abilities: [{
     ability: {
       name: string,

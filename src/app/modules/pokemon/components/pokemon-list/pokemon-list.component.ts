@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { PokemonState } from '../../reducers';
 import { updateComparisonPokemon, updateCurrentPokemon } from '../../actions/pokemon.actions';
@@ -17,24 +17,37 @@ import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.css']
 })
-export class PokemonListComponent {
+export class PokemonListComponent implements OnInit {
+  @Input() currentPokemon: PokemonListItem;
+  @Input() comparisonPokemon: PokemonListItem;
+  @Input() isComparing: boolean;
+  @Input() searchInput: string;
   @Input()
   get pokemonList(): PokemonListItem[] {
     return this.pokemonListItems;
   }
 
-  set pokemonList(pokemonList: PokemonListItem[]){
-    this.pokemonImages = pokemonList.map((pokemon) => this.getImage(pokemon.url));
+  set pokemonList(pokemonList: PokemonListItem[]) {
     this.pokemonListItems = pokemonList;
+    this.pokemonImages = pokemonList.map((pokemon) => this.getImage(pokemon.url));
   }
 
-  @Input() favoritePokemonList: PokemonListItem[];
-  @Input() currentPokemon: PokemonListItem;
-  @Input() comparisonPokemon: PokemonListItem;
-  @Input() isComparing: boolean;
-  @Input() searchInput: string;
+  @Input()
+  get favoritePokemonList(): PokemonListItem[] {
+    return this.favoritePokemonListItems;
+  }
+
+  set favoritePokemonList(favoritePokemonList: PokemonListItem[]){
+    this.favoritePokemonListItems = favoritePokemonList;
+    if (this.pokemonListItems) {
+      this.favorites = this.pokemonListItems.map((pokemon) => this.isFavorite(pokemon));
+    }
+  }
+
   private pokemonListItems: PokemonListItem[];
+  private favoritePokemonListItems: PokemonListItem[];
   pokemonImages: string[] = [];
+  favorites: boolean[] = [];
   nextOffset = 20;
   isFavoriteListFull = false;
 
@@ -42,6 +55,10 @@ export class PokemonListComponent {
               private pokemonCardService: PokemonCardEntityService,
               private store: Store<PokemonState>,
               private dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.favorites = this.pokemonList.map((pokemon) => this.isFavorite(pokemon));
+  }
 
   loadMorePokemon(): void {
     this.courseService.getWithQuery({
@@ -87,5 +104,3 @@ export class PokemonListComponent {
     this.isFavoriteListFull = isFavoriteListFull;
   }
 }
-
-

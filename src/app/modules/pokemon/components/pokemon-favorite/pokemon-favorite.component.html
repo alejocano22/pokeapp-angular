@@ -1,6 +1,7 @@
 <mat-icon 
   class="icon" 
-  [ngClass]="{'icon-selected' : favorite, 'big-size' : bigSize }" 
+  [ngClass]="{'icon-selected' : favorite}" 
+  [ngStyle]="{'font-size': fontSize}"
   (click)="handleFavorite($event)">
   favorite
 </mat-icon>

@@ -13,11 +13,22 @@ import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
   styleUrls: ['./pokemon-card-header.component.css']
 })
 export class PokemonCardHeaderComponent {
+  @Input()
+  get favoritePokemonList(): PokemonListItem[] {
+    return this.favoritePokemonListItems;
+  }
+
+  set favoritePokemonList(favoritePokemonList: PokemonListItem[]) {
+    this.favoritePokemonListItems = favoritePokemonList;
+    this.favorite = this.isFavorite(this.currentPokemon);
+  }
+
   @Input() isComparing: boolean;
   @Input() currentPokemon: PokemonListItem;
   @Input() comparisonPokemon: PokemonListItem;
   @Input() dialogRef: MatDialogRef<PokemonCardComponent>;
-  @Input() favoritePokemonList: PokemonListItem[];
+  private favoritePokemonListItems: PokemonListItem[];
+  favorite: boolean;
 
   constructor(private store: Store<PokemonState>) { }
 
