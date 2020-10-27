@@ -10,11 +10,13 @@ import { PokemonResources } from 'src/app/utils/pokemon/pokemon-resources';
 export class FavoritePokemonBannerComponent implements OnInit {
   @Input() favoritePokemonList: PokemonListItem[];
   pokemonImages: string[];
+  pokemonNames: string[];
 
   constructor() { }
 
   ngOnInit(): void {
     this.pokemonImages = this.favoritePokemonList.map((pokemon) => this.getImage(pokemon.url));
+    this.pokemonNames = this.favoritePokemonList.map((pokemon) => pokemon.name.toUpperCase());
   }
 
   getImage(url: string): string {

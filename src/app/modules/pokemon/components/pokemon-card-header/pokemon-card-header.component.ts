@@ -49,7 +49,7 @@ export class PokemonCardHeaderComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  isFavorite(pokemon: PokemonListItem): boolean{
+  isFavorite(pokemon: PokemonListItem): boolean {
     return PokemonInformation.isFavorite(this.favoritePokemonList, pokemon);
   }
 }

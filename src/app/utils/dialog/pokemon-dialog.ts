@@ -2,7 +2,7 @@ import { MatDialogConfig } from '@angular/material/dialog';
 import { PokemonDialogData } from 'src/app/modules/pokemon/models/pokemon-dialog-data';
 
 export class PokemonDialog {
-  constructor(){ }
+  constructor() { }
 
   static defaultDialogConfig(): MatDialogConfig<PokemonDialogData> {
     const dialogConfig = new MatDialogConfig();

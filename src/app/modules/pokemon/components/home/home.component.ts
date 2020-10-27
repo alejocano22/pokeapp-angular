@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.comparisonPokemon$ = this.store.pipe(select(getComparisonPokemon));
     this.isComparing$ = this.store.pipe(select(getIsComparing));
     this.searchInput$ = this.store.pipe(select(getSearchInput));
-
   }
 
   updateFilter(search: string = ''): void {

@@ -20,5 +20,4 @@ export class PokemonInformation {
     }
     return gender;
   }
-
 }

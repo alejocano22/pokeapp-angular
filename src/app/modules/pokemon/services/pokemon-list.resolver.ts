@@ -6,7 +6,7 @@ import { PokemonListEntityService } from './pokemon-list-entity.service';
 
 @Injectable()
 export class PokemonListResolver implements Resolve<boolean> {
-  constructor(private pokemonListService: PokemonListEntityService){ }
+  constructor(private pokemonListService: PokemonListEntityService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
     return this.pokemonListService.loaded$.pipe(

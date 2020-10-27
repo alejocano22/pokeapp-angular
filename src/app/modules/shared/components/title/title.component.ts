@@ -10,5 +10,4 @@ export class TitleComponent {
   @Input() fontSize?: boolean;
 
   constructor() { }
-
 }
