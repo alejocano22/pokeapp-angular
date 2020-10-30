@@ -10,14 +10,14 @@
   (scrolled)="loadMorePokemon()"> 
   <div 
     class="pokemon-item" 
-    *ngFor="let pokemon of pokemonList; index as i"
+    *ngFor="let pokemon of pokemonList; index as pokemonIndex"
     (click)="openPokemonCard(pokemon)">
-    <img class="pokemon-image" [src]="pokemonImages[i]" [alt]="pokemon.name">
+    <img class="pokemon-image" [src]="pokemonImages[pokemonIndex]" [alt]="pokemon.name">
     <h2 class="pokemon-name">
-      {{ pokemonNames[i] }}
+      {{ pokemonNames[pokemonIndex] }}
       <app-pokemon-favorite
         [pokemon]="pokemon" 
-        [favorite]="favorites[i]"
+        [favorite]="favorites[pokemonIndex]"
         [favoritePokemonLength]="favoritePokemonList.length"
         (isFavoriteListFull)="handleIsFavoriteFull($event)">
       </app-pokemon-favorite>

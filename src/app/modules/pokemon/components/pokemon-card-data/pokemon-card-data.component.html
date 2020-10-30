@@ -16,10 +16,10 @@
         <h3 class="pokemon-comparison-detail-title">Gender</h3>
         <h4 class="pokemon-comparison-detail-description">{{ pokemonGenderName[1] }}</h4>
       </div>
-      <div class="pokemon-comparison-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
-        <h4 class="pokemon-comparison-detail-description">{{ currentPokemon[pokemonDetailItem[i]] }}</h4>
+      <div class="pokemon-comparison-detail-item" *ngFor="let detail of pokemonDetailTitle; index as pokemonDetailIndex">
+        <h4 class="pokemon-comparison-detail-description">{{ currentPokemon[pokemonDetailItem[pokemonDetailIndex]] }}</h4>
         <h3 class="pokemon-comparison-detail-title">{{ detail }}</h3>
-        <h4 class="pokemon-comparison-detail-description">{{ comparisonPokemon[pokemonDetailItem[i]] }}</h4>
+        <h4 class="pokemon-comparison-detail-description">{{ comparisonPokemon[pokemonDetailItem[pokemonDetailIndex]] }}</h4>
       </div>
       <div class="pokemon-comparison-detail-item">
         <ul class="pokemon-comparison-detail-list" > 
@@ -47,9 +47,9 @@
           <h3 class="pokemon-detail-title">Gender</h3>
           <h4 clas="pokemon-detail-description">{{ pokemonGenderName[0] }}</h4>
         </div>
-        <div class="pokemon-detail-item" *ngFor="let detail of pokemonDetailTitle; index as i">
+        <div class="pokemon-detail-item" *ngFor="let detail of pokemonDetailTitle; index as pokemonDetailIndex">
           <h3 class="pokemon-detail-title">{{ detail }}</h3>
-          <h4 clas="pokemon-detail-description">{{ currentPokemon[pokemonDetailItem[i]] }}</h4>
+          <h4 clas="pokemon-detail-description">{{ currentPokemon[pokemonDetailItem[pokemonDetailIndex]] }}</h4>
         </div>
         <div class="pokemon-detail-item">
           <h3 class="pokemon-detail-title">Types</h3>

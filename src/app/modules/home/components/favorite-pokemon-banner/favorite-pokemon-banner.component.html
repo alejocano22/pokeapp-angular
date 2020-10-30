@@ -5,9 +5,9 @@
     cellsToShow="1"
     transitionDuration="500"
     arrowsTheme="dark">
-    <div class="carousel-cell" *ngFor="let pokemon of favoritePokemonList; index as i">
+    <div class="carousel-cell" *ngFor="let pokemon of favoritePokemonList; index as pokemonIndex">
       <div class="item">
-        <img class="pokemon-image" [src]="pokemonImages[i]" [alt]="pokemon.name">
+        <img class="pokemon-image" [src]="pokemonImages[pokemonIndex]" [alt]="pokemon.name">
         <h3 class="pokemon-name">{{ pokemonNames[i] }}</h3>
       </div>
     </div>
