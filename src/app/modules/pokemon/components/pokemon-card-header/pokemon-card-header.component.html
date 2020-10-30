@@ -9,7 +9,7 @@
   </h2>
   <app-pokemon-favorite 
     *ngIf="!isComparing"
-    fontSize="2rem"
+    [bigSize]="true"
     [pokemon]="currentPokemon" 
     [favorite]="favorite"
     [favoritePokemonLength]="favoritePokemonList.length">

@@ -13,7 +13,7 @@ export class PokemonFavoriteComponent {
   @Input() pokemon: PokemonListItem;
   @Input() favorite: boolean;
   @Input() favoritePokemonLength: number;
-  @Input() fontSize?: boolean;
+  @Input() bigSize: boolean;
   @Output() isFavoriteListFull = new EventEmitter<boolean>();
   maxFavoritePokemon = 5;
 

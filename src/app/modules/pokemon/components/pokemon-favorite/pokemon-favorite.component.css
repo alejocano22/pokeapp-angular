@@ -11,3 +11,7 @@
 .icon-selected {
   color: var(--pokemon-yellow);
 }
+
+.big-size {
+  font-size: 2rem;
+}
