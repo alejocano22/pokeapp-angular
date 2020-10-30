@@ -13,21 +13,17 @@ import { PokemonInformation } from 'src/app/utils/pokemon/pokemon-information';
   styleUrls: ['./pokemon-card-header.component.css']
 })
 export class PokemonCardHeaderComponent implements OnInit {
+  @Input() currentPokemon: PokemonListItem;
+  @Input() comparisonPokemon: PokemonListItem;
+  @Input() isComparing: boolean;
+  @Input() dialogRef: MatDialogRef<PokemonCardComponent>;
   @Input()
-  get favoritePokemonList(): PokemonListItem[] {
-    return this.favoritePokemonListItems;
-  }
-
   set favoritePokemonList(favoritePokemonList: PokemonListItem[]) {
     this.favoritePokemonListItems = favoritePokemonList;
     this.favorite = this.isFavorite(this.currentPokemon);
   }
 
-  @Input() currentPokemon: PokemonListItem;
-  @Input() comparisonPokemon: PokemonListItem;
-  @Input() isComparing: boolean;
-  @Input() dialogRef: MatDialogRef<PokemonCardComponent>;
-  private favoritePokemonListItems: PokemonListItem[];
+  favoritePokemonListItems: PokemonListItem[];
   pokemonNames: string[] = [];
   favorite: boolean;
 
@@ -50,6 +46,6 @@ export class PokemonCardHeaderComponent implements OnInit {
   }
 
   isFavorite(pokemon: PokemonListItem): boolean {
-    return PokemonInformation.isFavorite(this.favoritePokemonList, pokemon);
+    return PokemonInformation.isFavorite(this.favoritePokemonListItems, pokemon);
   }
 }

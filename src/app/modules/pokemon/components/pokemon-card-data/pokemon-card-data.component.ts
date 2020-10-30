@@ -9,11 +9,8 @@ import { PokemonResources } from 'src/app/utils/pokemon/pokemon-resources';
   styleUrls: ['./pokemon-card-data.component.css', 'pokemon-comparison-card-data.component.css']
 })
 export class PokemonCardDataComponent implements OnInit {
+  @Input() isComparing: boolean;
   @Input()
-  get currentPokemon(): Pokemon {
-    return this.currentPokemonInformation;
-  }
-
   set currentPokemon(currentPokemon: Pokemon) {
     this.currentPokemonInformation = currentPokemon;
     if (currentPokemon) {
@@ -23,10 +20,6 @@ export class PokemonCardDataComponent implements OnInit {
   }
 
   @Input()
-  get comparisonPokemon(): Pokemon {
-    return this.comparisonPokemonInformation;
-  }
-
   set comparisonPokemon(comparisonPokemon: Pokemon) {
     this.comparisonPokemonInformation = comparisonPokemon;
     if (comparisonPokemon) {
@@ -35,9 +28,8 @@ export class PokemonCardDataComponent implements OnInit {
     }
   }
 
-  @Input() isComparing: boolean;
-  private currentPokemonInformation: Pokemon;
-  private comparisonPokemonInformation: Pokemon;
+  currentPokemonInformation: Pokemon;
+  comparisonPokemonInformation: Pokemon;
   pokemonImages: string[] = [];
   pokemonDetailItem: string[] = ['height', 'weight'];
   pokemonDetailTitle: string[] = [];

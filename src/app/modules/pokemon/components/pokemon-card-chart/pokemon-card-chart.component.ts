@@ -13,44 +13,42 @@ import { barChartPrimaryStyle, barChartSecondaryStyle } from 'src/app/utils/char
 export class PokemonCardChartComponent {
   @Input() isComparing: boolean;
   @Input()
-  get currentPokemon(): Pokemon {
-    return this.currentPokemonInformation;
-  }
-
   set currentPokemon(currentPokemon: Pokemon) {
-    if (currentPokemon) {
-      this.barChartLabels = currentPokemon.stats.map((stat) => stat.stat.name);
-      const currentPokemonBaseStat = currentPokemon.stats.map((stat) => stat.base_stat);
-      this.barChartData = [{
-        data: currentPokemonBaseStat,
-        label: currentPokemon.name,
-        ...barChartPrimaryStyle }];
-    }
     this.currentPokemonInformation = currentPokemon;
+    this.fillPokemonChartData(currentPokemon);
   }
 
   @Input()
-  get comparisonPokemon(): Pokemon {
-    return this.comparisonPokemonInformation;
-  }
-
   set comparisonPokemon(comparisonPokemon: Pokemon) {
-    if (comparisonPokemon && this.isComparing) {
-      const comparisonPokemonBaseStat = comparisonPokemon.stats.map((stat) => stat.base_stat);
-      this.barChartData.push({
-        data: comparisonPokemonBaseStat,
-        label: comparisonPokemon.name,
-        ...barChartSecondaryStyle });
-    }
     this.comparisonPokemonInformation = comparisonPokemon;
+    this.fillPokemonChartData(comparisonPokemon);
   }
 
-  private currentPokemonInformation: Pokemon;
-  private comparisonPokemonInformation: Pokemon;
+  currentPokemonInformation: Pokemon;
+  comparisonPokemonInformation: Pokemon;
   barChartType: ChartType = 'bar';
   barChartOptions: ChartOptions = chartOptions;
   barChartData: ChartDataSets[];
   barChartLabels: Label[];
 
   constructor() { }
+
+  fillPokemonChartData(pokemon: Pokemon): void {
+    if (pokemon) {
+      if (!this.isComparing) {
+        this.barChartLabels = pokemon.stats.map((stat) => stat.stat.name);
+        const currentPokemonBaseStat = pokemon.stats.map((stat) => stat.base_stat);
+        this.barChartData = [{
+          data: currentPokemonBaseStat,
+          label: pokemon.name,
+          ...barChartPrimaryStyle }];
+      } else {
+        const comparisonPokemonBaseStat = pokemon.stats.map((stat) => stat.base_stat);
+        this.barChartData.push({
+          data: comparisonPokemonBaseStat,
+          label: pokemon.name,
+          ...barChartSecondaryStyle });
+      }
+    }
+  }
 }

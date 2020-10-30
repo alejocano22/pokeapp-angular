@@ -22,24 +22,16 @@ export class PokemonListComponent implements OnInit {
   @Input() comparisonPokemon: PokemonListItem;
   @Input() isComparing: boolean;
   @Input()
-  get pokemonList(): PokemonListItem[] {
-    return this.pokemonListItems;
-  }
-
   set pokemonList(pokemonList: PokemonListItem[]) {
     this.pokemonListItems = pokemonList;
     this.pokemonImages = pokemonList.map((pokemon) => this.getImage(pokemon.url));
     this.pokemonNames = pokemonList.map((pokemon) => pokemon.name.toUpperCase());
-    if (this.favoritePokemonList) {
+    if (this.favoritePokemonListItems) {
       this.favorites = pokemonList.map((pokemon) => this.isFavorite(pokemon));
     }
   }
 
   @Input()
-  get favoritePokemonList(): PokemonListItem[] {
-    return this.favoritePokemonListItems;
-  }
-
   set favoritePokemonList(favoritePokemonList: PokemonListItem[]) {
     this.favoritePokemonListItems = favoritePokemonList;
     if (this.pokemonListItems) {
@@ -47,8 +39,8 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  private pokemonListItems: PokemonListItem[];
-  private favoritePokemonListItems: PokemonListItem[];
+  pokemonListItems: PokemonListItem[];
+  favoritePokemonListItems: PokemonListItem[];
   pokemonNames: string[] = [];
   pokemonImages: string[] = [];
   favorites: boolean[] = [];
@@ -61,7 +53,7 @@ export class PokemonListComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.favorites = this.pokemonList.map((pokemon) => this.isFavorite(pokemon));
+    this.favorites = this.pokemonListItems.map((pokemon) => this.isFavorite(pokemon));
   }
 
   loadMorePokemon(): void {
@@ -91,7 +83,7 @@ export class PokemonListComponent implements OnInit {
       isComparing: this.isComparing,
       currentPokemon: this.currentPokemon,
       comparisonPokemon: this.comparisonPokemon,
-      favoritePokemonList: this.favoritePokemonList
+      favoritePokemonList: this.favoritePokemonListItems
     };
     this.dialog.open(PokemonCardComponent, dialogConfig);
   }
@@ -101,7 +93,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   isFavorite(pokemon: PokemonListItem): boolean {
-    return PokemonInformation.isFavorite(this.favoritePokemonList, pokemon);
+    return PokemonInformation.isFavorite(this.favoritePokemonListItems, pokemon);
   }
 
   handleIsFavoriteFull(isFavoriteListFull: boolean): void {
