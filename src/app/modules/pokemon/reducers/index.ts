@@ -6,15 +6,13 @@ export interface PokemonState {
   isComparing: boolean;
   currentPokemon: PokemonListItem;
   comparisonPokemon: PokemonListItem;
-  search: string;
   favoritePokemonList: PokemonListItem[];
 }
 
-export const initialAuthState: PokemonState = {
+export const initialPokemonState: PokemonState = {
   isComparing: false,
   currentPokemon: undefined,
   comparisonPokemon: undefined,
-  search: '',
   favoritePokemonList: [
     { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
     { name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/4/' },
@@ -23,7 +21,7 @@ export const initialAuthState: PokemonState = {
 };
 
 export const pokemonReducer = createReducer(
-  initialAuthState,
+  initialPokemonState,
   on(PokemonActions.compare, (state, action) => {
     return {
       ...state,
@@ -40,12 +38,6 @@ export const pokemonReducer = createReducer(
     return {
       ...state,
       comparisonPokemon: action.pokemon
-    };
-  }),
-  on(PokemonActions.updateSearchInput, (state, action) => {
-    return {
-      ...state,
-      search: action.search
     };
   }),
   on(PokemonActions.addFavoritePokemon, (state, action) => {

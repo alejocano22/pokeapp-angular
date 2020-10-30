@@ -17,7 +17,7 @@ export class PokemonCardDataComponent implements OnInit {
   set currentPokemon(currentPokemon: Pokemon) {
     this.currentPokemonInformation = currentPokemon;
     if (currentPokemon) {
-      this.pokemonImages[0] = this.getImage(currentPokemon.id) ;
+      this.pokemonImages[0] = this.getImage(currentPokemon.id);
       this.pokemonGenderName[0] = this.getGenderName(this.currentPokemon.genderRate);
     }
   }

@@ -15,11 +15,6 @@ export const updateComparisonPokemon = createAction(
   props<{ pokemon: PokemonListItem }>()
 );
 
-export const updateSearchInput = createAction(
-  '[Search Input] Update Search Input',
-  props<{ search: string }>()
-);
-
 export const addFavoritePokemon = createAction(
   '[Favorite Pokemon] Add Favorite Pokemon',
   props<{ pokemon: PokemonListItem }>()

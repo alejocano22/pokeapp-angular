@@ -67,7 +67,7 @@ const entityMetadata: EntityMetadataMap = {
     PokemonListDataService,
     PokemonCardEntityService,
     PokemonCardDataService,
-    PokemonListResolver
+    PokemonListResolver,
   ]
 })
 export class PokemonModule {

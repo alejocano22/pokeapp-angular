@@ -21,7 +21,6 @@ export class PokemonListComponent implements OnInit {
   @Input() currentPokemon: PokemonListItem;
   @Input() comparisonPokemon: PokemonListItem;
   @Input() isComparing: boolean;
-  @Input() searchInput: string;
   @Input()
   get pokemonList(): PokemonListItem[] {
     return this.pokemonListItems;
@@ -31,6 +30,9 @@ export class PokemonListComponent implements OnInit {
     this.pokemonListItems = pokemonList;
     this.pokemonImages = pokemonList.map((pokemon) => this.getImage(pokemon.url));
     this.pokemonNames = pokemonList.map((pokemon) => pokemon.name.toUpperCase());
+    if (this.favoritePokemonList) {
+      this.favorites = pokemonList.map((pokemon) => this.isFavorite(pokemon));
+    }
   }
 
   @Input()
