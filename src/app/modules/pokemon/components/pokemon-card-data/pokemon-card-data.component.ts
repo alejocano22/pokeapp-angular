@@ -15,7 +15,7 @@ export class PokemonCardDataComponent implements OnInit {
     this.currentPokemonInformation = currentPokemon;
     if (currentPokemon) {
       this.pokemonImages[0] = this.getImage(currentPokemon.id);
-      this.pokemonGenderName[0] = this.getGenderName(this.currentPokemon.genderRate);
+      this.pokemonGenderName[0] = this.getGenderName(currentPokemon.genderRate);
     }
   }
 
@@ -24,7 +24,7 @@ export class PokemonCardDataComponent implements OnInit {
     this.comparisonPokemonInformation = comparisonPokemon;
     if (comparisonPokemon) {
       this.pokemonImages[1] = this.getImage(comparisonPokemon.id);
-      this.pokemonGenderName[1] = this.getGenderName(this.comparisonPokemon.genderRate);
+      this.pokemonGenderName[1] = this.getGenderName(comparisonPokemon.genderRate);
     }
   }
 
