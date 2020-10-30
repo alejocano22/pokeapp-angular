@@ -33,9 +33,9 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.currentPokemonInformation$  = this.store.select(selectPokemonByName, { pokemonName: this.currentPokemon.name });
+    this.currentPokemonInformation$ = this.store.select(selectPokemonByName, { pokemonName: this.currentPokemon.name });
     if (this.isComparing) {
-      this.comparisonPokemonInformation$  = this.store.select(selectPokemonByName, { pokemonName: this.comparisonPokemon.name });
+      this.comparisonPokemonInformation$ = this.store.select(selectPokemonByName, { pokemonName: this.comparisonPokemon.name });
     }
   }
 
