@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { PokemonListItem } from '../models/pokemon-list-item';
 import { PokemonActions } from '../actions/action-types';
+import { environment } from 'src/environments/environment';
 
 export interface PokemonState {
   isComparing: boolean;
@@ -14,9 +15,9 @@ export const initialPokemonState: PokemonState = {
   currentPokemon: undefined,
   comparisonPokemon: undefined,
   favoritePokemonList: [
-    { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-    { name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/4/' },
-    { name: 'squirtle', url: 'https://pokeapi.co/api/v2/pokemon/7/' },
+    { name: 'bulbasaur', url: environment.pokemonApi + '1/' },
+    { name: 'charmander', url: environment.pokemonApi + '4/' },
+    { name: 'squirtle', url: environment.pokemonApi + '7/' },
   ]
 };
 
