@@ -15,13 +15,17 @@ export class PokemonCardChartComponent {
   @Input()
   set currentPokemon(currentPokemon: Pokemon) {
     this.currentPokemonInformation = currentPokemon;
-    this.fillPokemonChartData(currentPokemon);
+    if (currentPokemon) {
+      this.fillPokemonChartData(currentPokemon, this.comparisonPokemonInformation);
+    }
   }
 
   @Input()
   set comparisonPokemon(comparisonPokemon: Pokemon) {
     this.comparisonPokemonInformation = comparisonPokemon;
-    this.fillPokemonChartData(comparisonPokemon);
+    if (comparisonPokemon) {
+      this.fillPokemonChartData(this.currentPokemonInformation, comparisonPokemon);
+    }
   }
 
   currentPokemonInformation: Pokemon;
@@ -33,22 +37,19 @@ export class PokemonCardChartComponent {
 
   constructor() { }
 
-  fillPokemonChartData(pokemon: Pokemon): void {
-    if (pokemon) {
-      if (!this.isComparing) {
-        this.barChartLabels = pokemon.stats.map((stat) => stat.stat.name);
-        const currentPokemonBaseStat = pokemon.stats.map((stat) => stat.base_stat);
-        this.barChartData = [{
-          data: currentPokemonBaseStat,
-          label: pokemon.name,
-          ...barChartPrimaryStyle }];
-      } else {
-        const comparisonPokemonBaseStat = pokemon.stats.map((stat) => stat.base_stat);
-        this.barChartData.push({
-          data: comparisonPokemonBaseStat,
-          label: pokemon.name,
-          ...barChartSecondaryStyle });
-      }
+  fillPokemonChartData(currentPokemon: Pokemon, comparisonPokemon: Pokemon): void {
+    this.barChartLabels = currentPokemon.stats.map((stat) => stat.stat.name);
+    const currentPokemonBaseStat = currentPokemon.stats.map((stat) => stat.base_stat);
+    this.barChartData = [{
+      data: currentPokemonBaseStat,
+      label: currentPokemon.name,
+      ...barChartPrimaryStyle }];
+    if (this.isComparing) {
+      const comparisonPokemonBaseStat = comparisonPokemon.stats.map((stat) => stat.base_stat);
+      this.barChartData.push({
+        data: comparisonPokemonBaseStat,
+        label: comparisonPokemon.name,
+        ...barChartSecondaryStyle });
     }
   }
 }
