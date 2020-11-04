@@ -1,0 +1,44 @@
+.box {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 5rem;
+  right: 3rem;
+  padding: 0.5rem;
+  z-index: 1;
+  background: var(--pokemon-white);
+  border-radius: 5px;
+  color: var(--pokemon-gray);
+  border: 3px solid var(--pokemon-light-gray);
+  width: 12rem;
+}
+
+.main-message {
+  font-size: 1rem;
+  margin: 0;
+  border-bottom: 2px solid var(--pokemon-light-gray);
+}
+
+.message {
+  margin: 0;
+  padding: 0.5rem 0 0 0;
+  font-size: 1.2rem;
+  color: var(--pokemon-black);
+}
+
+@media (max-width: 900px) {
+  .box {
+    right: 2rem;
+    width: 8rem;
+  }
+
+  .main-message {
+    font-size: 0.6rem;
+  }
+
+  .message {
+    padding: 0.3rem 0 0 0;
+    font-size: 0.8rem;
+  }
+}

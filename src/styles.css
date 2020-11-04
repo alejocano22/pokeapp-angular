@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --pokemon-red: #ff0000;
+  --pokemon-dark-red: #cc0000;
+  --pokemon-blue: #3b4cca;
+  --pokemon-yellow: #ffde00;
+  --pokemon-dark-yellow: #b3a125;
+  --pokemon-white: #ffffff;
+  --pokemon-black: #000000;
+  --pokemon-transparent-black: #00000080;
+  --pokemon-gray: #808080;
+  --pokemon-light-gray: #e6e6e6;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}

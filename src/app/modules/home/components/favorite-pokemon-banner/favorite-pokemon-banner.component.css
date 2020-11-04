@@ -1,0 +1,50 @@
+.carousel-box {
+  display: flex;
+  justify-content: center;
+  margin: 0 3rem;
+  justify-content: center;
+}
+
+.carousel {
+  border-radius: 10px;
+  max-width: 40rem;
+}
+
+.carousel-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../../../../../assets/gifs/pokemonBackgroundEffect.gif")
+    center/cover no-repeat border-box;
+  border-radius: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+}
+
+.pokemon-name {
+  margin: 0;
+  font-size: 5rem;
+  -webkit-text-stroke: 0.1rem var(--pokemon-black);
+  color: var(--pokemon-white);
+}
+
+.pokemon-image {
+  width: 5rem;
+  image-rendering: pixelated;
+}
+
+@media (max-width: 900px) {
+  .item {
+    width: 15rem;
+  }
+  .pokemon-name {
+    font-size: 2rem;
+  }
+}

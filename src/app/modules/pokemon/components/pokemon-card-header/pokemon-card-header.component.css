@@ -1,0 +1,65 @@
+.pokemon-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  background: var(--pokemon-dark-red);
+}
+
+.close-button {
+  cursor: pointer;
+  outline: none;
+  margin: 1rem;
+  border: 0;
+  font-size: 1.2rem;
+  background: transparent;
+  color: var(--pokemon-white);
+}
+
+.pokemon-name {
+  width: 100%;
+  text-align: center;
+  color: var(--pokemon-white);
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.compare-button {
+  cursor: pointer;
+  outline: none;
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 12rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid var(--pokemon-dark-yellow);
+  background: var(--pokemon-dark-yellow);
+  color: var(--pokemon-white);
+}
+
+.compare-button:hover,
+.compare-button:active {
+  background: var(--pokemon-yellow);
+  border: 2px solid var(--pokemon-yellow);
+  color: var(--pokemon-gray);
+}
+
+@media (max-width: 900px) {
+  .close-button {
+    margin: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .pokemon-name {
+    margin: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .compare-button {
+    margin: 0.5rem;
+    padding: 0.2rem;
+    width: 8rem;
+    font-size: 0.8rem;
+  }
+}

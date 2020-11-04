@@ -1,0 +1,43 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid var(--pokemon-light-gray);
+  margin: 3rem;
+}
+
+.welcome-image {
+  margin-top: 2rem;
+  width: 20rem;
+}
+
+.welcome-message {
+  margin: 5rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  font-size: 10rem;
+  color: var(--pokemon-dark-red);
+  font-weight: 700;
+}
+
+.favorite-title {
+  margin: 1rem;
+}
+
+@media (max-width: 900px) {
+  .welcome-image {
+    margin-top: 6.5rem;
+    width: 15rem;
+  }
+
+  .welcome-message {
+    margin: 3rem;
+    margin-top: 1rem;
+    font-size: 4rem;
+  }
+}

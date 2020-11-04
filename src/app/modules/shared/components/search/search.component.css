@@ -1,0 +1,13 @@
+.search {
+  outline: none;
+  font-size: 1rem;
+  border: 2px solid var(--pokemon-gray);
+  border-radius: 6px;
+  color: var(--pokemon-black);
+}
+
+@media (max-width: 900px) {
+  .search {
+    font-size: 0.8rem;
+  }
+}

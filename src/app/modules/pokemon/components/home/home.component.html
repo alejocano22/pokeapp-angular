@@ -1,0 +1,16 @@
+<div class="search">
+  <app-search (inputChange)="updateFilter($event)"></app-search>
+</div>
+<div class="pokemon-list-home">
+  <div class="list-title">
+    <app-title title="List of Pokémon"></app-title>
+  </div>
+  <app-pokemon-list 
+    class="pokemon-list" 
+    [pokemonList]="pokemonList$ | async"
+    [favoritePokemonList]="favoritePokemonList$ | async"
+    [isComparing]="isComparing$ | async"
+    [currentPokemon]="currentPokemon$ | async"
+    [comparisonPokemon]="comparisonPokemon$ | async">
+  </app-pokemon-list>
+</div>
